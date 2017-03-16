@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WorkoutPlannerApp</string>
+    <string name="select_workout">select your workout</string>
 </resources>

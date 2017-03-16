@@ -23,4 +23,33 @@ public class SetTest {
     public void testSetHasActivityType(){
         assertEquals("deadlift", set.getActivity());
     }
+
+    @Test
+    public void testSetHasReps(){
+        assertEquals(6, set.getReps());
+    }
+
+    @Test
+    public void testSetHasWeight(){
+        assertEquals(80, set.getWeight());
+    }
+
+    @Test
+    public void canChangeReps(){
+        set.setReps(4);
+        assertEquals(4, set.getReps());
+    }
+
+    @Test
+    public void canChangeWeight(){
+        set.setWeight(65);
+        assertEquals(65, set.getWeight());
+    }
+
+    @Test
+    public void canUpdateSetWithNewRepsAndWeight(){
+        set.updateSet(2, 20);
+        assertEquals(2, set.getReps());
+        assertEquals(20, set.getWeight());
+    }
 }

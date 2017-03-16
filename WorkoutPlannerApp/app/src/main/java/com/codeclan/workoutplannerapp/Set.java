@@ -19,4 +19,25 @@ public class Set {
     public String getActivity(){
         return this.activity.toString().toLowerCase();
     }
+
+    public int getReps() {
+        return reps;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setReps(int reps) {
+        this.reps = reps;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public void updateSet(int reps, int weight){
+        setReps(reps);
+        setWeight(weight);
+    }
 }

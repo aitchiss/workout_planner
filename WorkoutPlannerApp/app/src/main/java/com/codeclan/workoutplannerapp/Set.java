@@ -1,0 +1,22 @@
+package com.codeclan.workoutplannerapp;
+
+/**
+ * Created by user on 16/03/2017.
+ */
+
+public class Set {
+
+    private Activity activity;
+    private int reps;
+    private int weight;
+
+    public Set(Activity activity, int reps, int weight){
+        this.activity = activity;
+        this.reps = reps;
+        this.weight = weight;
+    }
+
+    public String getActivity(){
+        return this.activity.toString().toLowerCase();
+    }
+}

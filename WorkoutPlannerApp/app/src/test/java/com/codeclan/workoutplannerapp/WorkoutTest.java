@@ -3,6 +3,8 @@ package com.codeclan.workoutplannerapp;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -43,4 +45,20 @@ public class WorkoutTest {
         assertEquals(5, set3.getReps());
         assertEquals("lunges", set4.getActivity());
     }
+
+    @Test
+    public void testGetAllSets(){
+        ArrayList<Set> allSets = workout.getAllSets();
+        assertEquals(2, allSets.size());
+    }
+
+    @Test
+    public void canGetCompletedDate(){
+        workout.markComplete();
+        String completedDate = workout.getCompletedDate();
+        assertEquals("16-Mar-2017", completedDate);
+    }
+
+
+
 }

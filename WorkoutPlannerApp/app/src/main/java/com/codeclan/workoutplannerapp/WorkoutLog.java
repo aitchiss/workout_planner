@@ -26,4 +26,8 @@ public class WorkoutLog {
         }
         return null;
     }
+
+    public ArrayList<Workout> getAllWorkoutTemplates(){
+        return this.workoutTemplates;
+    }
 }

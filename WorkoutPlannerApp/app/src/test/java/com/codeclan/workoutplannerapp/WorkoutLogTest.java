@@ -3,6 +3,8 @@ package com.codeclan.workoutplannerapp;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -42,5 +44,12 @@ public class WorkoutLogTest {
     public void testGetTempateCanSearchMultipleWorkouts(){
         Workout foundTemplate = workoutLog.getWorkoutTemplate("second test workout");
         assertEquals(workout2, foundTemplate);
+    }
+
+    @Test
+    public void canGetAllWorkoutTemplates(){
+        ArrayList<Workout> allWorkouts = workoutLog.getAllWorkoutTemplates();
+        assertEquals(workout, allWorkouts.get(0));
+        assertEquals(workout2, allWorkouts.get(1));
     }
 }

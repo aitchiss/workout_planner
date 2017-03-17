@@ -24,7 +24,9 @@
         android:id="@+id/view_workout_button"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"/>
+        android:layout_gravity="right"
+        android:onClick="onViewButtonClick"
+        />
     
 
 

@@ -59,6 +59,4 @@ public class WorkoutTest {
         assertEquals("16-Mar-2017", completedDate);
     }
 
-
-
 }

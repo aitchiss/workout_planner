@@ -1,6 +1,7 @@
 package com.codeclan.workoutplannerapp;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by user on 16/03/2017.
@@ -62,6 +63,8 @@ public class WorkoutLog {
 
     public void finishCurrentWorkout(){
         this.currentWorkout.markComplete();
+        Workout templateWorkout = getWorkoutTemplate(this.currentWorkout.getName());
+        templateWorkout.setLastCompletedDate(new Date());
         addToCompletedWorkouts(this.currentWorkout);
         this.currentWorkout = null;
     }

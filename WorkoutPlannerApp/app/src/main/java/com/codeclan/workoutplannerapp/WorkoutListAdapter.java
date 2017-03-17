@@ -36,16 +36,10 @@ public class WorkoutListAdapter extends ArrayAdapter<Workout> {
         TextView workoutName = (TextView) listItemView.findViewById(R.id.workout_name);
         workoutName.setText(currentWorkout.getName());
 
-//        Button viewWorkoutButton = (Button) listItemView.findViewById(R.id.view_workout_button);
-//        viewWorkoutButton.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//                public void onClick(View view){
-//                Intent intent = new Intent(this, ViewWorkoutActivity.class);
-//                intent.putExtra("workout", currentWorkout.getName());
-//                startActivity(intent);
-//            }
-//        });
+        Button viewWorkoutButton = (Button) listItemView.findViewById(R.id.view_workout_button);
+        viewWorkoutButton.setTag(currentWorkout);
 
+//
 //        TextView lastCompletedDate = ??
 
         return listItemView;

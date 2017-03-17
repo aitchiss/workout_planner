@@ -26,6 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:onClick="onViewButtonClick"
+        android:background="@color/colorAccent"
+        android:text="go"
+        android:textColor="@color/colorPrimary"
+        style="?android:attr/borderlessButtonStyle"
         />
     
 

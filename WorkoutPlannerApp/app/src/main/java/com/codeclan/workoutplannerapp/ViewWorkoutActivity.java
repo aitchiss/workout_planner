@@ -38,7 +38,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
         Workout workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
-        TextView listingView = (TextView) findViewById(R.id.workout_listing);
+        TextView listingView = (TextView) findViewById(R.id.workout_name);
         listingView.setText(workout.getName());
     }
 }

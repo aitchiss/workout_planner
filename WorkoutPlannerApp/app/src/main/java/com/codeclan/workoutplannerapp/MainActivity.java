@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
 //        AppHistory appHistory = new AppHistory();
-//        appHistory.setup(sharedPref);
+//        appHistory.setup(sharedPref); --- this stuff isn't working yet - to revisit!
         SharedPreferences.Editor editor = sharedPref.edit();
 
         String retrievedWorkoutLog = sharedPref.getString("WorkoutLog", "Nothing here");
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             TypeToken<WorkoutLog> workoutLogType = new TypeToken<WorkoutLog>(){};
             workoutLog = gson.fromJson(retrievedWorkoutLog, workoutLogType.getType());
         }
-        
+
 
         ArrayList<Workout> list = workoutLog.getAllWorkoutTemplates();
 

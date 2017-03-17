@@ -40,7 +40,7 @@ public class WorkoutListAdapter extends ArrayAdapter<Workout> {
         viewWorkoutButton.setTag(currentWorkout);
 
 //
-//        TextView lastCompletedDate = ??
+//        TextView lastCompletedDate = ?? - needs updated when I actually have the function
 
         return listItemView;
     }

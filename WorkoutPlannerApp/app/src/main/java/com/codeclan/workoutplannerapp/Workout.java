@@ -15,7 +15,7 @@ public class Workout {
     private String name;
     private ArrayList<Set> sets;
     private Date completedDate;
-    private Date lastcompletedDate;
+
 
     public Workout(String name){
         this.name = name;
@@ -54,9 +54,7 @@ public class Workout {
         return formattedDate;
     }
 
-    public void setLastCompletedDate(Date date){
-        this.lastcompletedDate = date;
-    }
+
 
 
 }

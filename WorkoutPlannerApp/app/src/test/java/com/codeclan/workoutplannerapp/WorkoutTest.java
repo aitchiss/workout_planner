@@ -52,11 +52,5 @@ public class WorkoutTest {
         assertEquals(2, allSets.size());
     }
 
-    @Test
-    public void canGetCompletedDate(){
-        workout.markComplete();
-        String completedDate = workout.getCompletedDate();
-        assertEquals("16-Mar-2017", completedDate);
-    }
 
 }

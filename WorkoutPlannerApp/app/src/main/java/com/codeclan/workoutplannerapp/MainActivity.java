@@ -24,12 +24,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //something here to recall persisted saved data, and then add it back into a
-        //workout log. Would need to all be handled in WorkoutLog class.
-        //e.g. restoreWorkoutTemplates, restoreCompletedWorkouts.
 
         Gson gson = new Gson();
         SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
+//        AppHistory appHistory = new AppHistory();
+//        appHistory.setup(sharedPref);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         String retrievedWorkoutLog = sharedPref.getString("WorkoutLog", "Nothing here");
@@ -42,17 +41,14 @@ public class MainActivity extends AppCompatActivity {
             TypeToken<WorkoutLog> workoutLogType = new TypeToken<WorkoutLog>(){};
             workoutLog = gson.fromJson(retrievedWorkoutLog, workoutLogType.getType());
         }
+        
 
-
-        //below just to test adapter/display
-        Workout workout = new Workout("test workout");
-        workout.addMultipleSets(Activity.LUNGES, 10, 25, 3);
-        workoutLog.addWorkoutTemplate(workout);
         ArrayList<Workout> list = workoutLog.getAllWorkoutTemplates();
 
-        //save the new version of the log
+//        save the new version of the log
         editor.putString("WorkoutLog", gson.toJson(workoutLog));
         editor.apply();
+
 
         WorkoutListAdapter workoutListAdapter = new WorkoutListAdapter(this, list);
         ListView listView = (ListView) findViewById(R.id.all_workouts_list);

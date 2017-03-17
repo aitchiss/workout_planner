@@ -68,5 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void createNewWorkoutClick(View button){
+        
+        Intent intent = new Intent(this, CreateWorkoutActivity.class);
+        startActivity(intent);
+    }
+
 
 }

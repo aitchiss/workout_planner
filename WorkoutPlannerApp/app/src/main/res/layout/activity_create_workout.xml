@@ -4,32 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.codeclan.workoutplannerapp.MainActivity"
+    tools:context="com.codeclan.workoutplannerapp.CreateWorkoutActivity"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/select_workout"
+        android:text="new workout"
         android:layout_gravity="center"
-        android:textSize="20dp"
         android:padding="20dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="enter workout name"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/colorAccent"
+        android:padding="20dp"
+        />
+
+    <ListView
+        android:id="@+id/set_builder_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ListView>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="?android:attr/borderlessButtonStyle"
-        android:backgroundTint="@color/colorBackground"
-        android:onClick="createNewWorkoutClick"
-        android:text="CREATE NEW WORKOUT"
         android:layout_gravity="center"
-        android:padding="20dp"
-        android:textColor="@color/colorAccent"/>
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@color/colorAccent"
+        android:text="save"
+        android:textColor="@color/colorPrimary"/>
 
     <ListView
-        android:id="@+id/all_workouts_list"
+        android:id="@+id/available_activities_list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"></ListView>
+        android:layout_height="wrap_content"></ListView>
 
 </LinearLayout>

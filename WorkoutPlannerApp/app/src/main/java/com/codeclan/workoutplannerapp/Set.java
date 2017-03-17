@@ -40,4 +40,8 @@ public class Set {
         setReps(reps);
         setWeight(weight);
     }
+
+    public Activity getActivityType(){
+        return this.activity;
+    }
 }

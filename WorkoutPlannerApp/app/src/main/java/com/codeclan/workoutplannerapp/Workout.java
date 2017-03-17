@@ -52,4 +52,6 @@ public class Workout {
         String formattedDate = DateFormat.getDateInstance().format(this.completedDate);
         return formattedDate;
     }
+
+
 }

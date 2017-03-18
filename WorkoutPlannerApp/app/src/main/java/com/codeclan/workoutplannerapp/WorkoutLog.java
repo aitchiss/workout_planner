@@ -11,8 +11,8 @@ public class WorkoutLog {
 
     private ArrayList<Workout> workoutTemplates;
     private Workout currentWorkout;
+    private Set currentSet;
     private ArrayList<Workout> completedWorkouts;
-
 
 
     public WorkoutLog(){
@@ -55,6 +55,11 @@ public class WorkoutLog {
         }
 
         currentWorkout = newWorkout;
+        currentSet = currentWorkout.getSet(0);
+    }
+
+    public Set getCurrentSet() {
+        return currentSet;
     }
 
     public ArrayList<Workout> getCompletedWorkouts() {
@@ -69,5 +74,34 @@ public class WorkoutLog {
 
     public void addToCompletedWorkouts(Workout workout){
         this.completedWorkouts.add(workout);
+    }
+
+    public void updateCurrentSet(Integer reps, Integer weight){
+        this.currentSet.setReps(reps);
+        this.currentSet.setWeight(weight);
+    }
+
+    public void finishCurrentSet(Integer reps, Integer weight){
+        updateCurrentSet(reps, weight);
+
+        if (anotherSetRemaining() == true){
+            int currentSetIndex = currentWorkout.getAllSets().indexOf(this.currentSet);
+            int newSetIndex = currentSetIndex + 1;
+            currentSet = currentWorkout.getSet(newSetIndex);
+        } else {
+            finishCurrentWorkout();
+        }
+
+    }
+
+    public Boolean anotherSetRemaining(){
+        int currentSetIndex = currentWorkout.getAllSets().indexOf(this.currentSet);
+        int newSetIndex = currentSetIndex + 1;
+        int numberOfSetsInWorkout = currentWorkout.getAllSets().size();
+        if (newSetIndex >= numberOfSetsInWorkout){
+            return false;
+        } else {
+            return true;
+        }
     }
 }

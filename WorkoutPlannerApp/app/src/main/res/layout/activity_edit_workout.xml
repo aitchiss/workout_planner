@@ -20,10 +20,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></ListView>
 
+    <Button
+        android:id="@+id/done_with_edit_button"
+        android:onClick="onDoneEditingButtonClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="done"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add activity: "/>
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:text="add another activity"/>
 
     <ListView
         android:id="@+id/available_activities_list"

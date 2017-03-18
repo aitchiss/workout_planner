@@ -41,7 +41,7 @@ public class WorkoutLogTest {
     }
 
     @Test
-    public void testGetTempateCanSearchMultipleWorkouts(){
+    public void testGetTemplateCanSearchMultipleWorkouts(){
         Workout foundTemplate = workoutLog.getWorkoutTemplate("second test workout");
         assertEquals(workout2, foundTemplate);
     }
@@ -56,16 +56,16 @@ public class WorkoutLogTest {
     @Test
     public void canStartWorkoutFromTemplate(){
         workoutLog.startWorkout("test workout");
-        Set set1 = workoutLog.getCurrentWorkout().getSet(0);
+        Set set1 = workoutLog.getCurrentSet();
         assertEquals(Activity.BENCHPRESS, set1.getActivityType());
     }
 
     @Test
     public void startingWorkoutDoesntAlterTemplate(){
         workoutLog.startWorkout("test workout");
-        workoutLog.getCurrentWorkout().getSet(0).setReps(122);
-        assertEquals(122, workoutLog.getCurrentWorkout().getSet(0).getReps());
-        assertEquals(5, workoutLog.getWorkoutTemplate("test workout").getSet(0).getReps());
+        workoutLog.getCurrentSet().setReps(122);
+        assertEquals((Integer) 122, workoutLog.getCurrentSet().getReps());
+        assertEquals((Integer) 5, workoutLog.getWorkoutTemplate("test workout").getSet(0).getReps());
     }
 
     @Test
@@ -73,7 +73,7 @@ public class WorkoutLogTest {
         workoutLog.startWorkout("test workout");
         workoutLog.finishCurrentWorkout();
         Workout firstCompletedWorkout = workoutLog.getCompletedWorkouts().get(0);
-        assertEquals(5, firstCompletedWorkout.getSet(0).getReps());
+        assertEquals((Integer) 5, firstCompletedWorkout.getSet(0).getReps());
     }
 
     @Test
@@ -81,6 +81,52 @@ public class WorkoutLogTest {
         workoutLog.startWorkout("test workout");
         workoutLog.finishCurrentWorkout();
         assertEquals(null, workoutLog.getCurrentWorkout());
+    }
+
+    @Test
+    public void updateCurrentSetUpdatesRepsAndWeight(){
+        workoutLog.startWorkout("test workout");
+        workoutLog.updateCurrentSet(5, 25);
+        assertEquals((Integer) 25, workoutLog.getCurrentSet().getWeight());
+    }
+
+    @Test
+    public void finishCurrentSetUpdatesCurrentSet(){
+        workoutLog.startWorkout("test workout");
+        workoutLog.finishCurrentSet(5, 25);
+        assertEquals((Integer) 35, workoutLog.getCurrentSet().getWeight());
+    }
+
+    @Test
+    public void anotherSetRemainingReturnsFalseIfFinalSet(){
+        Workout shortWorkout = new Workout("short workout");
+        shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
+        workoutLog.addWorkoutTemplate(shortWorkout);
+        workoutLog.startWorkout("short workout");
+        workoutLog.finishCurrentSet(2, 33);
+
+        assertEquals(false, workoutLog.anotherSetRemaining());
+    }
+
+    @Test
+    public void anotherSetRemainingReturnsTrueIfNotFinalSet(){
+        Workout shortWorkout = new Workout("short workout");
+        shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
+        workoutLog.addWorkoutTemplate(shortWorkout);
+        workoutLog.startWorkout("short workout");
+        assertEquals(true, workoutLog.anotherSetRemaining());
+    }
+
+    @Test
+    public void finishCurrentSetEndsWorkoutIfLastSet(){
+        Workout shortWorkout = new Workout("short workout");
+        shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
+        workoutLog.addWorkoutTemplate(shortWorkout);
+        workoutLog.startWorkout("short workout");
+        workoutLog.finishCurrentSet(2, 33);
+        workoutLog.finishCurrentSet(2, 33);
+        assertEquals(null, workoutLog.getCurrentWorkout());
+        assertEquals("short workout", workoutLog.getCompletedWorkouts().get(0).getName());
     }
 
 

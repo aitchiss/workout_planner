@@ -42,7 +42,7 @@ public class WorkoutTest {
         workout.addMultipleSets(Activity.LUNGES, 5, 30, 5);
         Set set3 = workout.getSet(2);
         Set set4 = workout.getSet(6);
-        assertEquals(5, set3.getReps());
+        assertEquals((Integer) 5, set3.getReps());
         assertEquals("lunges", set4.getActivity());
     }
 

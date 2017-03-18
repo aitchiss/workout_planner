@@ -26,30 +26,31 @@ public class SetTest {
 
     @Test
     public void testSetHasReps(){
-        assertEquals(6, set.getReps());
+        Integer reps = set.getReps();
+        assertEquals((Integer) 6, reps);
     }
 
     @Test
     public void testSetHasWeight(){
-        assertEquals(80, set.getWeight());
+        assertEquals((Integer) 80, set.getWeight());
     }
 
     @Test
     public void canChangeReps(){
         set.setReps(4);
-        assertEquals(4, set.getReps());
+        assertEquals((Integer) 4, set.getReps());
     }
 
     @Test
     public void canChangeWeight(){
         set.setWeight(65);
-        assertEquals(65, set.getWeight());
+        assertEquals((Integer) 65, set.getWeight());
     }
 
     @Test
     public void canUpdateSetWithNewRepsAndWeight(){
         set.updateSet(2, 20);
-        assertEquals(2, set.getReps());
-        assertEquals(20, set.getWeight());
+        assertEquals((Integer) 2, set.getReps());
+        assertEquals((Integer) 20, set.getWeight());
     }
 }

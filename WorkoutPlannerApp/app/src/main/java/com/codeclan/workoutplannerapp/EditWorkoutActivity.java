@@ -69,5 +69,11 @@ public class EditWorkoutActivity extends AppCompatActivity {
         intent.putExtra("workout", workout.getName());
         startActivity(intent);
     }
+
+    public void onDoneEditingButtonClick(View button){
+        Intent intent = new Intent(this, ViewWorkoutActivity.class);
+        intent.putExtra("workout", workout.getName());
+        startActivity(intent);
+    }
 }
 

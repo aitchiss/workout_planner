@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
+    Workout workout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         String selectedWorkoutName = extras.getString("workout");
 
 
-        Workout workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
+        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
         TextView listingView = (TextView) findViewById(R.id.workout_name);
         listingView.setText(workout.getName());
@@ -50,5 +53,12 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.workout_contents);
 
         listView.setAdapter(workoutContentsAdapter);
+    }
+
+    public void onEditButtonClick(View button){
+        String selectedWorkout = workout.getName();
+        Intent intent = new Intent(this, EditWorkoutActivity.class);
+        intent.putExtra("workout", selectedWorkout);
+        startActivity(intent);
     }
 }

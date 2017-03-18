@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,4 +57,17 @@ public class EditWorkoutActivity extends AppCompatActivity {
         ListView activitiesList = (ListView) findViewById(R.id.available_activities_list);
         activitiesList.setAdapter(listAvailableActivitiesAdapter);
     }
+
+    public void onAddSetButtonClick(View button){
+
+        Button viewButton = (Button) button;
+        Activity selectedActivity = (Activity) viewButton.getTag();
+        String activityName = selectedActivity.toString();
+
+        Intent intent = new Intent(this, AddSetActivity.class);
+        intent.putExtra("activity", activityName);
+        intent.putExtra("workout", workout.getName());
+        startActivity(intent);
+    }
 }
+

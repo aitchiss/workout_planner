@@ -23,11 +23,6 @@
         android:backgroundTint="@color/colorAccent"
         android:padding="20dp"
         />
-    <!--<ListView-->
-        <!--android:id="@+id/set_builder_list"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--&gt;</ListView>-->
 
     <Button
         android:layout_width="wrap_content"
@@ -38,7 +33,5 @@
         android:text="save"
         android:textColor="@color/colorPrimary"
         android:onClick="onSaveButtonClick"/>
-
-
 
 </LinearLayout>

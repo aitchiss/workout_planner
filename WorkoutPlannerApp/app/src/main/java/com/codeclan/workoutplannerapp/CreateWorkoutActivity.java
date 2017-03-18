@@ -32,24 +32,10 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         TypeToken<WorkoutLog> workoutLogTypeToken = new TypeToken<WorkoutLog>(){};
         workoutLog = gson.fromJson(retrievedLog, workoutLogTypeToken.getType());
 
-//        ArrayList<Activity> allActivities = Activity.getAllActivities();
-//
-//        ListAvailableActivitiesAdapter listAvailableActivitiesAdapter = new ListAvailableActivitiesAdapter(this, allActivities);
-//        ListView listView = (ListView) findViewById(R.id.available_activities_list);
-//        listView.setAdapter(listAvailableActivitiesAdapter);
     }
 
 
-    public void onAddSetButtonClick(View button){
 
-        Button viewButton = (Button) button;
-        Activity selectedActivity = (Activity) viewButton.getTag();
-        String activityName = selectedActivity.toString();
-
-        Intent intent = new Intent(this, AddSetActivity.class);
-        intent.putExtra("activity", activityName);
-        startActivity(intent);
-    }
 
     public void onSaveButtonClick(View view){
 

@@ -15,6 +15,7 @@
         android:padding="20dp"/>
 
     <EditText
+        android:id="@+id/workout_name_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="enter workout name"
@@ -36,7 +37,8 @@
         style="?android:attr/borderlessButtonStyle"
         android:background="@color/colorAccent"
         android:text="save"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary"
+        android:onClick="onSaveButtonClick"/>
 
     <ListView
         android:id="@+id/available_activities_list"

@@ -32,6 +32,9 @@ public class ListAvailableActivitiesAdapter extends ArrayAdapter<Activity> {
         TextView activityName = (TextView) listItemView.findViewById(R.id.activity_name);
         activityName.setText(currentActivity.toString().toLowerCase());
 
+        Button addButton = (Button) listItemView.findViewById(R.id.add_set);
+        addButton.setTag(currentActivity);
+
 
         return listItemView;
     }

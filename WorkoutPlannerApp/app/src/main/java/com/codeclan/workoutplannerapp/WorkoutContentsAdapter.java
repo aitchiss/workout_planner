@@ -18,7 +18,7 @@ public class WorkoutContentsAdapter extends ArrayAdapter<Set> {
 
     public WorkoutContentsAdapter(Context context, ArrayList<Set> sets){
         super(context, 0, sets);
-        
+
     }
 
     @Override

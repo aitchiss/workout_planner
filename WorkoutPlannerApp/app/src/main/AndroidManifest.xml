@@ -18,7 +18,8 @@
         <activity android:name=".ViewWorkoutActivity" />
         <activity android:name=".CreateWorkoutActivity" />
         <activity android:name=".AddSetActivity" />
-        <activity android:name=".EditWorkoutActivity"></activity>
+        <activity android:name=".EditWorkoutActivity" />
+        <activity android:name=".PlayWorkoutActivity"></activity>
     </application>
 
 </manifest>

@@ -52,12 +52,31 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.workout_contents);
 
         listView.setAdapter(workoutContentsAdapter);
+
+        ArrayList<Workout> listOfCompletedWorkouts = workoutLog.getCompletedWorkoutsByName(workout.getName());
+
+        WorkoutHistoryAdapter workoutHistoryAdapter = new WorkoutHistoryAdapter(this, listOfCompletedWorkouts);
+        ListView historyListView = (ListView) findViewById(R.id.workout_history_list);
+        historyListView.setAdapter(workoutHistoryAdapter);
     }
 
     public void onEditButtonClick(View button){
         String selectedWorkout = workout.getName();
         Intent intent = new Intent(this, EditWorkoutActivity.class);
         intent.putExtra("workout", selectedWorkout);
+        startActivity(intent);
+    }
+
+    public void onStartButtonClick(View button){
+        workoutLog.startWorkout(workout.getName());
+
+        Gson gson = new Gson();
+        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("WorkoutLog", gson.toJson(workoutLog));
+        editor.apply();
+
+        Intent intent = new Intent(this, PlayWorkoutActivity.class);
         startActivity(intent);
     }
 }

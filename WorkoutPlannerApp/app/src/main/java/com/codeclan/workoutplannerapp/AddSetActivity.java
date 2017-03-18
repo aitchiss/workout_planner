@@ -66,7 +66,7 @@ public class AddSetActivity extends AppCompatActivity {
         editor.putString("WorkoutLog", gson.toJson(workoutLog));
         editor.apply();
 
-        Intent intent = new Intent(this, ViewWorkoutActivity.class);
+        Intent intent = new Intent(this, EditWorkoutActivity.class);
         intent.putExtra("workout", workout.getName());
         startActivity(intent);
     }

@@ -54,6 +54,16 @@ public class Workout {
         return formattedDate;
     }
 
+    public int getNumberOfSimilarSets(String activityName){
+        int counter = 0;
+        for (Set set: getAllSets()){
+            if (set.getActivity().equals(activityName)){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
 
 
 

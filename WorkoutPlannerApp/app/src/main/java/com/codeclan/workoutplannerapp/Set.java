@@ -36,7 +36,7 @@ public class Set {
         this.weight = weight;
     }
 
-    public void updateSet(Integer reps, int weight){
+    public void updateSet(Integer reps, Integer weight){
         setReps(reps);
         setWeight(weight);
     }

@@ -52,5 +52,11 @@ public class WorkoutTest {
         assertEquals(2, allSets.size());
     }
 
+    @Test
+    public void getNumberOfSimilarSetsTest(){
+        workout.addMultipleSets(Activity.LUNGES, 5, 30, 5);
+        assertEquals(5, workout.getNumberOfSimilarSets("lunges"));
+    }
+
 
 }

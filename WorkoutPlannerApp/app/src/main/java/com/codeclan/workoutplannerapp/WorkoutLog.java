@@ -66,10 +66,21 @@ public class WorkoutLog {
         return completedWorkouts;
     }
 
+    public ArrayList<Workout> getCompletedWorkoutsByName(String workoutName){
+        ArrayList<Workout> matchingWorkouts = new ArrayList<Workout>();
+        for (Workout workout : this.completedWorkouts){
+            if (workout.getName().equals(workoutName)){
+                matchingWorkouts.add(workout);
+            }
+        }
+        return matchingWorkouts;
+    }
+
     public void finishCurrentWorkout(){
         this.currentWorkout.markComplete();
         addToCompletedWorkouts(this.currentWorkout);
         this.currentWorkout = null;
+        this.currentSet = null;
     }
 
     public void addToCompletedWorkouts(Workout workout){

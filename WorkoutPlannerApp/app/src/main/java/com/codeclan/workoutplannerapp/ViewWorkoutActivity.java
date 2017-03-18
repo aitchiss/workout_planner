@@ -33,7 +33,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         String retrievedLog = sharedPref.getString("WorkoutLog", "Nothing here");
 
         TypeToken<WorkoutLog> workoutLogTypeToken = new TypeToken<WorkoutLog>(){};
-        WorkoutLog workoutLog = gson.fromJson(retrievedLog, workoutLogTypeToken.getType());
+        workoutLog = gson.fromJson(retrievedLog, workoutLogTypeToken.getType());
 
 
         Intent intent = getIntent();
@@ -47,7 +47,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         listingView.setText(workout.getName());
 
         ArrayList<Set> listOfSets = workout.getAllSets();
-        Log.d("Sets retrieved: ", listOfSets.toString());
 
         WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
         ListView listView = (ListView) findViewById(R.id.workout_contents);

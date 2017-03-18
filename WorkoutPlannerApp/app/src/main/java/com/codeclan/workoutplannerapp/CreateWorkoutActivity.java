@@ -32,11 +32,11 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         TypeToken<WorkoutLog> workoutLogTypeToken = new TypeToken<WorkoutLog>(){};
         workoutLog = gson.fromJson(retrievedLog, workoutLogTypeToken.getType());
 
-        ArrayList<Activity> allActivities = Activity.getAllActivities();
-
-        ListAvailableActivitiesAdapter listAvailableActivitiesAdapter = new ListAvailableActivitiesAdapter(this, allActivities);
-        ListView listView = (ListView) findViewById(R.id.available_activities_list);
-        listView.setAdapter(listAvailableActivitiesAdapter);
+//        ArrayList<Activity> allActivities = Activity.getAllActivities();
+//
+//        ListAvailableActivitiesAdapter listAvailableActivitiesAdapter = new ListAvailableActivitiesAdapter(this, allActivities);
+//        ListView listView = (ListView) findViewById(R.id.available_activities_list);
+//        listView.setAdapter(listAvailableActivitiesAdapter);
     }
 
 

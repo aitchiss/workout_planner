@@ -7,10 +7,10 @@ package com.codeclan.workoutplannerapp;
 public class Set {
 
     private Activity activity;
-    private int reps;
-    private int weight;
+    private Integer reps;
+    private Integer weight;
 
-    public Set(Activity activity, int reps, int weight){
+    public Set(Activity activity, Integer reps, Integer weight){
         this.activity = activity;
         this.reps = reps;
         this.weight = weight;
@@ -20,23 +20,23 @@ public class Set {
         return this.activity.toString().toLowerCase();
     }
 
-    public int getReps() {
+    public Integer getReps() {
         return reps;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setReps(int reps) {
+    public void setReps(Integer reps) {
         this.reps = reps;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
-    public void updateSet(int reps, int weight){
+    public void updateSet(Integer reps, int weight){
         setReps(reps);
         setWeight(weight);
     }

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -40,5 +42,13 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
         TextView listingView = (TextView) findViewById(R.id.workout_name);
         listingView.setText(workout.getName());
+
+        ArrayList<Set> listOfSets = workout.getAllSets();
+        Log.d("Sets retrieved: ", listOfSets.toString());
+
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
+        ListView listView = (ListView) findViewById(R.id.workout_contents);
+
+        listView.setAdapter(workoutContentsAdapter);
     }
 }

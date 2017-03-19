@@ -37,11 +37,8 @@ public class WorkoutHistoryAdapter extends ArrayAdapter<Workout>{
         TextView dateEntry = (TextView) listItemView.findViewById(R.id.workout_completed_date);
         dateEntry.setText(currentWorkout.getCompletedDate());
 
-        ListView historySetDetailsList = (ListView) listItemView.findViewById(R.id.workout_contents);
-        ArrayList<String> setHistoryList = currentWorkout.getSetDetailsConciseForm();
-
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(context, setHistoryList);
-        historySetDetailsList.setAdapter(workoutContentsAdapter);
+        TextView performanceInfo = (TextView) listItemView.findViewById(R.id.workout_history_details);
+        performanceInfo.setText(currentWorkout.getWorkoutPeformance());
 
         return listItemView;
     }

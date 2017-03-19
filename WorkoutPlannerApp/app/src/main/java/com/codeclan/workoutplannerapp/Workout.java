@@ -82,7 +82,15 @@ public class Workout {
             }
         }
         return conciseList;
+    }
 
+    public String getWorkoutPeformance(){
+        String performanceInfo = "";
+        for (String setInfo : getSetDetailsConciseForm()){
+            performanceInfo += setInfo + "\n";
+        }
+
+        return performanceInfo;
     }
 
 

@@ -1,6 +1,7 @@
 package com.codeclan.workoutplannerapp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -73,6 +74,7 @@ public class WorkoutLog {
                 matchingWorkouts.add(workout);
             }
         }
+        Collections.reverse(matchingWorkouts);
         return matchingWorkouts;
     }
 

@@ -39,8 +39,9 @@ public class WorkoutListAdapter extends ArrayAdapter<Workout> {
         Button viewWorkoutButton = (Button) listItemView.findViewById(R.id.view_workout_button);
         viewWorkoutButton.setTag(currentWorkout);
 
-//
-//        TextView lastCompletedDate = ?? - needs updated when I actually have the function
+        TextView lastCompletedDate = (TextView) listItemView.findViewById(R.id.last_completed_date);
+        lastCompletedDate.setText("Last completed: " + currentWorkout.getTemplateLastUsedDate());
+
 
         return listItemView;
     }

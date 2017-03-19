@@ -129,5 +129,11 @@ public class WorkoutLogTest {
         assertEquals("short workout", workoutLog.getCompletedWorkouts().get(0).getName());
     }
 
+    @Test
+    public void testCanRetrieveLastDateCompleted(){
+        workoutLog.startWorkout("test workout");
+        assertEquals("19-Mar-2017", workoutLog.getWorkoutTemplate("test workout").getTemplateLastUsedDate());
+    }
+
 
 }

@@ -17,11 +17,13 @@ public class Workout {
     private String name;
     private ArrayList<Set> sets;
     private Date completedDate;
+    private Date templateLastUsedDate;
 
 
     public Workout(String name){
         this.name = name;
         this.sets = new ArrayList<Set>();
+        this.templateLastUsedDate = null;
     }
 
     public String getName() {
@@ -51,9 +53,26 @@ public class Workout {
         completedDate = new Date();
     }
 
+    public void templateUpdateLastUsedDate(){
+        this.templateLastUsedDate = new Date();
+    }
+
+    public String getTemplateLastUsedDate(){
+        if (this.templateLastUsedDate == null){
+            return "never";
+        } else {
+            String formattedDate = DateFormat.getDateInstance().format(this.templateLastUsedDate);
+            return formattedDate;
+        }
+    }
+
     public String getCompletedDate(){
         String formattedDate = DateFormat.getDateInstance().format(this.completedDate);
         return formattedDate;
+    }
+
+    public Date getRawCompletedDate(){
+        return this.completedDate;
     }
 
     public int getNumberOfSimilarSets(String activityName){
@@ -75,8 +94,8 @@ public class Workout {
         ArrayList<String> conciseList = new ArrayList<String>();
 
         for (String string : setDetails){
-            int occurances = Collections.frequency(setDetails, string);
-            String newString = occurances + " x " + string;
+            int occurences = Collections.frequency(setDetails, string);
+            String newString = occurences + " x " + string;
             if (!conciseList.contains(newString)){
                 conciseList.add(newString);
             }

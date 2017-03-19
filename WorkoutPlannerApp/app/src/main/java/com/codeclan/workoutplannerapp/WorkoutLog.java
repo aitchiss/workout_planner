@@ -45,6 +45,8 @@ public class WorkoutLog {
 
     public void startWorkout(String workoutName){
         Workout workout = getWorkoutTemplate(workoutName);
+        workout.templateUpdateLastUsedDate();
+
         Workout newWorkout = new Workout(workout.getName());
 
         for (Set set : workout.getAllSets()){
@@ -116,5 +118,19 @@ public class WorkoutLog {
         } else {
             return true;
         }
+    }
+
+    public String getLastCompletedDate(String workoutName){
+
+        ArrayList<Workout> matchingWorkouts = getCompletedWorkoutsByName(workoutName);
+        Date completedDate = matchingWorkouts.get(0).getRawCompletedDate();
+        Workout latestWorkout = matchingWorkouts.get(0);
+        for (Workout workout : matchingWorkouts){
+            Date workoutCompletedDate = workout.getRawCompletedDate();
+            if (workoutCompletedDate.after(completedDate)){
+                latestWorkout = workout;
+            }
+        }
+        return latestWorkout.getCompletedDate();
     }
 }

@@ -18,37 +18,21 @@ public class MainActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
+    AppHistory appHistory;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-//        AppHistory appHistory = new AppHistory();
-//        appHistory.setup(sharedPref); --- this stuff isn't working yet - to revisit!
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        String retrievedWorkoutLog = sharedPref.getString("WorkoutLog", "Nothing here");
-
-        if (retrievedWorkoutLog.equals("Nothing here")){
-            workoutLog = new WorkoutLog();
-            editor.putString("WorkoutLog", gson.toJson(workoutLog));
-            editor.apply();
-        } else {
-            TypeToken<WorkoutLog> workoutLogType = new TypeToken<WorkoutLog>(){};
-            workoutLog = gson.fromJson(retrievedWorkoutLog, workoutLogType.getType());
-        }
-
+        sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
+        appHistory = new AppHistory();
+        workoutLog = appHistory.setup(sharedPref);
 
         ArrayList<Workout> list = workoutLog.getAllWorkoutTemplates();
 
-//        save the new version of the log
-        editor.putString("WorkoutLog", gson.toJson(workoutLog));
-        editor.apply();
-
+        appHistory.updateLog(sharedPref, workoutLog);
 
         WorkoutListAdapter workoutListAdapter = new WorkoutListAdapter(this, list);
         ListView listView = (ListView) findViewById(R.id.all_workouts_list);

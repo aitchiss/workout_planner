@@ -14,10 +14,10 @@ import java.util.ArrayList;
  * Created by user on 18/03/2017.
  */
 
-public class WorkoutContentsAdapter extends ArrayAdapter<Set> {
+public class WorkoutContentsAdapter extends ArrayAdapter<String> {
 
-    public WorkoutContentsAdapter(Context context, ArrayList<Set> sets){
-        super(context, 0, sets);
+    public WorkoutContentsAdapter(Context context, ArrayList<String> setDetails){
+        super(context, 0, setDetails);
 
     }
 
@@ -28,18 +28,19 @@ public class WorkoutContentsAdapter extends ArrayAdapter<Set> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.workout_contents_list_item, parent,false);
         }
 
-        Set currentSet = getItem(position);
+        String currentSet = getItem(position);
 
 
         TextView setActivity = (TextView) listItemView.findViewById(R.id.set_activity_name);
-        setActivity.setText(currentSet.getActivity() + ": ");
+        setActivity.setText(currentSet);
+//        setActivity.setText(currentSet.getActivity() + ": ");
 
 
-        TextView setReps = (TextView) listItemView.findViewById(R.id.number_of_reps);
-        setReps.setText(currentSet.getReps().toString() + " reps x ");
-
-        TextView setWeight = (TextView) listItemView.findViewById(R.id.weight);
-        setWeight.setText(currentSet.getWeight().toString() + "kg");
+//        TextView setReps = (TextView) listItemView.findViewById(R.id.number_of_reps);
+//        setReps.setText(currentSet.getReps().toString() + " reps x ");
+//
+//        TextView setWeight = (TextView) listItemView.findViewById(R.id.weight);
+//        setWeight.setText(currentSet.getWeight().toString() + "kg");
 
 
         return listItemView;

@@ -21,36 +21,30 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
     Workout workout;
+    AppHistory appHistory;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_workout);
 
-
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-        String retrievedLog = sharedPref.getString("WorkoutLog", "Nothing here");
-
-        TypeToken<WorkoutLog> workoutLogTypeToken = new TypeToken<WorkoutLog>(){};
-        workoutLog = gson.fromJson(retrievedLog, workoutLogTypeToken.getType());
-
+        sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
+        appHistory = new AppHistory();
+        workoutLog = appHistory.setup(sharedPref);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String selectedWorkoutName = extras.getString("workout");
-
 
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
         TextView listingView = (TextView) findViewById(R.id.workout_name);
         listingView.setText(workout.getName());
 
-        ArrayList<Set> listOfSets = workout.getAllSets();
-
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
+        ArrayList<String> listOfSetDetails = workout.getSetDetailsConciseForm();
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSetDetails);
         ListView listView = (ListView) findViewById(R.id.workout_contents);
-
         listView.setAdapter(workoutContentsAdapter);
 
         ArrayList<Workout> listOfCompletedWorkouts = workoutLog.getCompletedWorkoutsByName(workout.getName());
@@ -58,10 +52,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         WorkoutHistoryAdapter workoutHistoryAdapter = new WorkoutHistoryAdapter(this, listOfCompletedWorkouts);
         ListView historyListView = (ListView) findViewById(R.id.workout_history_list);
         historyListView.setAdapter(workoutHistoryAdapter);
-
-
-
-
     }
 
     public void onEditButtonClick(View button){
@@ -73,12 +63,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
     public void onStartButtonClick(View button){
         workoutLog.startWorkout(workout.getName());
-
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("WorkoutLog", gson.toJson(workoutLog));
-        editor.apply();
+        appHistory.updateLog(sharedPref, workoutLog);
 
         Intent intent = new Intent(this, PlayWorkoutActivity.class);
         startActivity(intent);

@@ -44,9 +44,8 @@ public class EditWorkoutActivity extends AppCompatActivity {
         TextView title = (TextView) findViewById(R.id.workout_to_edit);
         title.setText("edit workout: " + workout.getName());
 
-        ArrayList<Set> listOfSets = workout.getAllSets();
-
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
+        ArrayList<String> listOfSetDetails = workout.getSetDetailsConciseForm();
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSetDetails);
         ListView listView = (ListView) findViewById(R.id.workout_contents);
 
         listView.setAdapter(workoutContentsAdapter);

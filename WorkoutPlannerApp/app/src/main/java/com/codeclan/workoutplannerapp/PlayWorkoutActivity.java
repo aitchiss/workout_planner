@@ -20,18 +20,18 @@ public class PlayWorkoutActivity extends AppCompatActivity {
     Workout workout;
     Set set;
     Integer count;
+    AppHistory appHistory;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_workout);
 
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-        String retrievedLog = sharedPref.getString("WorkoutLog", "Nothing here");
+        sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
 
-        TypeToken<WorkoutLog> workoutLogTypeToken = new TypeToken<WorkoutLog>(){};
-        workoutLog = gson.fromJson(retrievedLog, workoutLogTypeToken.getType());
+        appHistory = new AppHistory();
+        workoutLog = appHistory.setup(sharedPref);
 
         workout = workoutLog.getCurrentWorkout();
         set = workoutLog.getCurrentSet();
@@ -67,12 +67,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         Integer actualWeight = Integer.valueOf(weightAchieved);
 
         workoutLog.finishCurrentSet(numberOfReps, actualWeight);
-
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("WorkoutLog", gson.toJson(workoutLog));
-        editor.apply();
+        appHistory.updateLog(sharedPref, workoutLog);
 
         if (workoutLog.getCurrentSet() == null){
 

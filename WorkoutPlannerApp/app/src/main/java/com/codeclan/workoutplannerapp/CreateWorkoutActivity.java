@@ -19,19 +19,17 @@ public class CreateWorkoutActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
+    AppHistory appHistory;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_workout);
 
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-        String retrievedLog = sharedPref.getString("WorkoutLog", "Nothing here");
-
-        TypeToken<WorkoutLog> workoutLogTypeToken = new TypeToken<WorkoutLog>(){};
-        workoutLog = gson.fromJson(retrievedLog, workoutLogTypeToken.getType());
-
+        sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
+        appHistory = new AppHistory();
+        workoutLog = appHistory.setup(sharedPref);
     }
 
 
@@ -44,11 +42,7 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         Workout workout = new Workout(workoutName);
         workoutLog.addWorkoutTemplate(workout);
 
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("WorkoutLog", gson.toJson(workoutLog));
-        editor.apply();
+        appHistory.updateLog(sharedPref, workoutLog);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

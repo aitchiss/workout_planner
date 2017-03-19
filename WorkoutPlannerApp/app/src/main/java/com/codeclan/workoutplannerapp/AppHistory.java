@@ -16,10 +16,9 @@ public class AppHistory {
 
     WorkoutLog workoutLog;
 
-    public void setup(SharedPreferences sharedPref){
+    public WorkoutLog setup(SharedPreferences sharedPref){
 
         Gson gson = new Gson();
-//        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         String retrievedWorkoutLog = sharedPref.getString("WorkoutLog", "Nothing here");
@@ -32,12 +31,14 @@ public class AppHistory {
             TypeToken<WorkoutLog> workoutLogType = new TypeToken<WorkoutLog>(){};
             workoutLog = gson.fromJson(retrievedWorkoutLog, workoutLogType.getType());
         }
+
+        return workoutLog;
     }
 
 
-    public void updateLog(SharedPreferences sharedPref, WorkoutLog newLog){
+    public void updateLog(SharedPreferences sharedPref, WorkoutLog log){
         Gson gson = new Gson();
-        this.workoutLog = newLog;
+        this.workoutLog = log;
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("WorkoutLog", gson.toJson(workoutLog));
         editor.apply();

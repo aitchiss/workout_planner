@@ -58,6 +58,22 @@ public class WorkoutTest {
         assertEquals(5, workout.getNumberOfSimilarSets("lunges"));
     }
 
+    @Test
+    public void getConciseSetDetails(){
+        String expected = "1 x deadlift: 8reps x 70kg";
+        String returned = workout.getSetDetailsConciseForm().get(0);
+        assertEquals(returned, expected);
+    }
+
+    @Test
+    public void getConciseSetDetailsWorksForMultiples(){
+        Set newSet = new Set(Activity.DEADLIFT, 8, 70);
+        workout.addSet(newSet);
+        String expected = "2 x deadlift: 8reps x 70kg";
+        String returned = workout.getSetDetailsConciseForm().get(0);
+        assertEquals(returned, expected);
+    }
+
 
 
 }

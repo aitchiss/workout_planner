@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -74,6 +75,8 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         editor.apply();
 
         if (workoutLog.getCurrentSet() == null){
+
+            Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(this, ViewWorkoutActivity.class);
             intent.putExtra("workout", workout.getName());

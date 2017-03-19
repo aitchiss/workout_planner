@@ -5,6 +5,7 @@ package com.codeclan.workoutplannerapp;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -111,6 +112,8 @@ public class Workout {
 
         return performanceInfo;
     }
+
+
 
 
 

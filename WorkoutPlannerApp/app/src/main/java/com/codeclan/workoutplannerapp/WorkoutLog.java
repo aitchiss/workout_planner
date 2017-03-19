@@ -46,6 +46,8 @@ public class WorkoutLog {
     public void startWorkout(String workoutName){
         Workout workout = getWorkoutTemplate(workoutName);
         workout.templateUpdateLastUsedDate();
+        this.workoutTemplates.remove(workout);
+        this.workoutTemplates.add(0, workout);
 
         Workout newWorkout = new Workout(workout.getName());
 

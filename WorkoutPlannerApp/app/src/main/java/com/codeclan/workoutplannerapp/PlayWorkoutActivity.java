@@ -37,7 +37,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         set = workoutLog.getCurrentSet();
 
         TextView title = (TextView) findViewById(R.id.current_workout_name);
-        title.setText(workout.getName());
+        title.setText("in progress: " + workout.getName());
 
         TextView currentActivity = (TextView) findViewById(R.id.current_activity_name);
         currentActivity.setText(set.getActivity());

@@ -12,19 +12,12 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:padding="10dp"
+          android:onClick="onAddSetButtonClick"
+          android:layout_marginLeft="10dp"
           android:textSize="20dp"
+          android:textColor="@color/colorAccent"
           android:layout_alignParentLeft="true"/>
 
-      <Button
-          android:id="@+id/add_set"
-          android:onClick="onAddSetButtonClick"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="add"
-          android:textColor="@color/colorAccent"
-          style="?android:attr/borderlessButtonStyle"
-          android:backgroundTint="@color/colorBackground"
-          android:layout_alignParentRight="true"/>
 
    </RelativeLayout>
 

@@ -23,10 +23,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sets in program"
+            android:text="sets"
             android:layout_gravity="center"
-            android:textSize="15dp"
-            android:padding="10dp"
+            android:textSize="25dp"
+            android:layout_marginBottom="20dp"
             />
 
         <ImageView
@@ -37,6 +37,7 @@
             android:src="@drawable/ic_action_name"
             android:tint="@color/colorAccent"
             android:padding="5dp"
+            android:layout_marginBottom="55dp"
             />
 
     </LinearLayout>
@@ -50,6 +51,7 @@
 
     <Button
         android:id="@+id/start_workout_button"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
@@ -62,12 +64,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="completed workouts"
+        android:text="workout history"
+        android:layout_marginBottom="30dp"
         android:layout_gravity="center"
+        android:textSize="25dp"
         android:layout_marginTop="40dp"/>
 
     <ListView
         android:id="@+id/workout_history_list"
+        android:divider="@color/colorPrimary"
+        android:dividerHeight="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></ListView>
 

@@ -57,10 +57,10 @@ public class EditWorkoutActivity extends AppCompatActivity {
         activitiesList.setAdapter(listAvailableActivitiesAdapter);
     }
 
-    public void onAddSetButtonClick(View button){
+    public void onAddSetButtonClick(View view){
 
-        Button viewButton = (Button) button;
-        Activity selectedActivity = (Activity) viewButton.getTag();
+        TextView addSetText = (TextView) view;
+        Activity selectedActivity = (Activity) addSetText.getTag();
         String activityName = selectedActivity.toString();
 
         Intent intent = new Intent(this, AddSetActivity.class);

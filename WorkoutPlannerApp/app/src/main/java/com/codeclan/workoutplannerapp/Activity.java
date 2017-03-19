@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public enum Activity {
 
-    DEADLIFT,
-    SQUAT,
-    LUNGES,
     BENCHPRESS,
-    SHOULDERPRESS;
+    DEADLIFT,
+    LUNGES,
+    SHOULDERPRESS,
+    SQUAT;
 
    public static ArrayList<Activity> getAllActivities(){
        ArrayList<Activity> allActivities = new ArrayList<Activity>();

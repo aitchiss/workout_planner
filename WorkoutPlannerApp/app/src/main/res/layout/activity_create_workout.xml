@@ -10,6 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
         android:text="new workout"
         android:layout_gravity="center"
         android:padding="20dp"/>
@@ -21,7 +22,7 @@
         android:hint="enter workout name"
         android:layout_gravity="center"
         android:backgroundTint="@color/colorAccent"
-        android:padding="20dp"
+        android:padding="25dp"
         />
 
     <Button
@@ -30,7 +31,8 @@
         android:layout_gravity="center"
         style="?android:attr/borderlessButtonStyle"
         android:background="@color/colorAccent"
-        android:text="save"
+        android:text="create"
+        android:layout_marginTop="20dp"
         android:textColor="@color/colorPrimary"
         android:onClick="onSaveButtonClick"/>
 

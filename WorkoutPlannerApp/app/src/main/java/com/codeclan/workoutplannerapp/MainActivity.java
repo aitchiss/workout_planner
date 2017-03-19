@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -39,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(workoutListAdapter);
     }
 
-    public void onViewButtonClick(View button){
+    public void onViewButtonClick(View view){
 
-        Button viewButton = (Button) button;
-        Workout workoutSelected = (Workout) viewButton.getTag();
+        TextView viewWorkout = (TextView) view;
+        Workout workoutSelected = (Workout) viewWorkout.getTag();
         String workoutName = workoutSelected.getName();
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);

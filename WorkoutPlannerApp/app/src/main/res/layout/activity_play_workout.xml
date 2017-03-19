@@ -9,51 +9,72 @@
 
     <TextView
         android:id="@+id/current_workout_name"
+        android:layout_marginTop="30dp"
+        android:textSize="30dp"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/current_activity_name"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/current_set_number"
+        android:layout_gravity="center"
+        android:textSize="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="25dp"
         android:text="reps"/>
 
     <EditText
         android:id="@+id/current_reps"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_gravity="center"
+        android:textSize="25dp"
+        android:width="50dp"
+        android:textAlignment="center"
+        android:inputType="number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="weight"/>
+        android:layout_gravity="center"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        android:text="weight (kg)"/>
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/current_weight"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:inputType="number"
+        android:width="50dp"
+        android:textSize="25dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/current_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="kg"/>
-    </LinearLayout>
+        android:layout_height="wrap_content" />
+
 
     <Button
         android:id="@+id/set_finished_button"
+        android:layout_marginTop="30dp"
         android:text="done"
+        android:layout_gravity="center"
         android:onClick="finishSetButtonClicked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

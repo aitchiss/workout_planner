@@ -65,13 +65,13 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         String weightAchieved = weightInput.getText().toString();
         Integer actualWeight = Integer.valueOf(weightAchieved);
 
+        workoutLog.finishCurrentSet(numberOfReps, actualWeight);
+
         Gson gson = new Gson();
         SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("WorkoutLog", gson.toJson(workoutLog));
         editor.apply();
-
-        workoutLog.finishCurrentSet(numberOfReps, actualWeight);
 
         if (workoutLog.getCurrentSet() == null){
 

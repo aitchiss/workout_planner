@@ -20,7 +20,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/completed_workout_contents_list"
+        android:id="@+id/workout_contents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></ListView>
 

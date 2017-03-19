@@ -4,7 +4,9 @@ package com.codeclan.workoutplannerapp;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by user on 16/03/2017.
@@ -63,8 +65,6 @@ public class Workout {
         }
         return counter;
     }
-
-
 
 
 

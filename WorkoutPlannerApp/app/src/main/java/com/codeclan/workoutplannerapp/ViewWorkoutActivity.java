@@ -58,6 +58,10 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         WorkoutHistoryAdapter workoutHistoryAdapter = new WorkoutHistoryAdapter(this, listOfCompletedWorkouts);
         ListView historyListView = (ListView) findViewById(R.id.workout_history_list);
         historyListView.setAdapter(workoutHistoryAdapter);
+
+
+
+
     }
 
     public void onEditButtonClick(View button){

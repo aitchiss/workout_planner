@@ -86,6 +86,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
         FragmentManager fm = getFragmentManager();
         DeleteWarning dialogFragment = new DeleteWarning ();
+        setTheme(R.style.DialogWarning);
         dialogFragment.show(fm, "Sample Fragment");
     }
 

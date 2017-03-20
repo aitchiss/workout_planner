@@ -38,10 +38,6 @@ public class WorkoutContentsAdapter extends ArrayAdapter<String> {
         ImageView minusSetButton = (ImageView) listItemView.findViewById(R.id.minus_set_button);
         minusSetButton.setTag(currentSet);
 
-        ImageView plusSetButton = (ImageView) listItemView.findViewById(R.id.plus_set_button);
-        plusSetButton.setTag(currentSet);
-
-
         return listItemView;
     }
 }

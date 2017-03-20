@@ -104,6 +104,7 @@ public class Workout {
         return conciseList;
     }
 
+
     public String getWorkoutPeformance(){
         String performanceInfo = "";
         for (String setInfo : getSetDetailsConciseForm()){
@@ -134,6 +135,8 @@ public class Workout {
 
         return stringWithRepsRemoved;
     }
+
+
 
     public void deleteSetFromConciseSetDetails(String setDetails){
         String activity = getActivityFromConciseSetDetails(setDetails);

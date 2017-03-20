@@ -79,4 +79,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.workout_contents);
         listView.setAdapter(workoutContentsAdapter);
     }
+
+
 }

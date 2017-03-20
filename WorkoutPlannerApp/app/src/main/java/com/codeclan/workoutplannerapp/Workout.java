@@ -113,6 +113,10 @@ public class Workout {
         return performanceInfo;
     }
 
+    public void deleteSet(Set setToDelete){
+        this.sets.remove(setToDelete);
+    }
+
 
 
 

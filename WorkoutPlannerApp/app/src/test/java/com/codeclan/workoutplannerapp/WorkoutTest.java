@@ -74,6 +74,13 @@ public class WorkoutTest {
         assertEquals(returned, expected);
     }
 
+    @Test
+    public void canDeleteSetFromWorkout(){
+        workout.deleteSet(set1);
+        Set newFirstSet = workout.getSet(0);
+        assertEquals(set2, newFirstSet);
+    }
+
 
 
 }

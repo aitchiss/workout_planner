@@ -46,7 +46,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
         count = 1;
 
-        Integer numberOfSimilarSets = (Integer) workout.getNumberOfSimilarSets(set.getActivity());
+        Integer numberOfSimilarSets = workout.getNumberOfSimilarSets(set.getActivity());
         currentSetNumber.setText(count.toString() + " of " + numberOfSimilarSets.toString());
 
         EditText numberOfReps = (EditText) findViewById(R.id.current_reps);
@@ -88,7 +88,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
             TextView currentSetNumber = (TextView) findViewById(R.id.current_set_number);
 
-            Integer numberOfSimilarSets = (Integer) workout.getNumberOfSimilarSets(set.getActivity());
+            Integer numberOfSimilarSets = workout.getNumberOfSimilarSets(set.getActivity());
             currentSetNumber.setText(count.toString() + " of " + numberOfSimilarSets.toString());
 
             EditText newNumberOfReps = (EditText) findViewById(R.id.current_reps);

@@ -44,7 +44,8 @@ public class CreateWorkoutActivity extends AppCompatActivity {
 
         appHistory.updateLog(sharedPref, workoutLog);
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ViewWorkoutActivity.class);
+        intent.putExtra("workout", workoutName);
         startActivity(intent);
     }
 }

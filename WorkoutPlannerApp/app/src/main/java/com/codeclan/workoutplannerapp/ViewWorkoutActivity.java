@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -83,6 +84,8 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     public void deleteWorkoutButtonClick(View button){
         workoutLog.deleteWorkoutTemplate(workout);
         appHistory.updateLog(sharedPref, workoutLog);
+
+        Toast.makeText(this, "Workout Deleted", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

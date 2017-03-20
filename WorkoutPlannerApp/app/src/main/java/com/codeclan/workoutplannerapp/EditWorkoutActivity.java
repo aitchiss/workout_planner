@@ -85,5 +85,19 @@ public class EditWorkoutActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.workout_contents);
         listView.setAdapter(workoutContentsAdapter);
     }
+
+    public void onPlusButtonClick(View button){
+        ImageView plusButton = (ImageView) button;
+        Set setToCopy = (Set) plusButton.getTag();
+        int indexOfSetToCopy = workout.getAllSets().indexOf(setToCopy);
+        Set setToAdd = new Set(setToCopy.getActivityType(), setToCopy.getReps(), setToCopy.getWeight());
+        workout.addSetAtIndex(setToAdd, indexOfSetToCopy);
+
+        appHistory.updateLog(sharedPref, workoutLog);
+        ArrayList<Set> listOfSets = workout.getAllSets();
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
+        ListView listView = (ListView) findViewById(R.id.workout_contents);
+        listView.setAdapter(workoutContentsAdapter);
+    }
 }
 

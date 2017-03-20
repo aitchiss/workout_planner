@@ -9,25 +9,25 @@
 
     <TextView
         android:id="@+id/add_set_title"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:layout_gravity="center"
         android:padding="10dp"
-        android:textSize="25dp"
-        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
         android:id="@+id/add_set_activity_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:padding="10dp"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -35,7 +35,7 @@
 
     <EditText
         android:padding="10dp"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:width="50dp"
         android:textAlignment="center"
         android:id="@+id/choose_set_number"
@@ -47,7 +47,7 @@
 
     <TextView
         android:padding="10dp"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
 
     <EditText
         android:padding="10dp"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:textAlignment="center"
         android:width="50dp"
         android:backgroundTint="@color/colorAccent"
@@ -67,7 +67,7 @@
 
     <TextView
         android:padding="10dp"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:text="Weight (kg): "
         android:layout_gravity="center"
         android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:backgroundTint="@color/colorAccent"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:id="@+id/choose_weight_number"
         android:inputType="number"
         android:layout_width="wrap_content"

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.codeclan.workoutplannerapp.ViewWorkoutActivity"
-    android:orientation="vertical">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.codeclan.workoutplannerapp.ViewWorkoutActivity"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/workout_name"
@@ -13,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:textSize="30dp"
+        android:textSize="25dp"
         />
 
     <LinearLayout
@@ -25,8 +26,8 @@
             android:layout_height="wrap_content"
             android:text="sets"
             android:layout_gravity="center"
-            android:textSize="25dp"
-            android:layout_marginBottom="20dp"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
             />
 
         <ImageView
@@ -34,10 +35,11 @@
             android:onClick="onEditButtonClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_name"
+            android:src="@drawable/ic_edit"
             android:tint="@color/colorAccent"
             android:padding="5dp"
-            android:layout_marginBottom="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="30dp"
             />
 
     </LinearLayout>
@@ -67,25 +69,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         style="?android:attr/borderlessButtonStyle"
         android:textColor="@color/colorAccent"
         android:text="delete workout"/>
 
-    <TextView
+    <Button
+        android:id="@+id/view_history_button"
+        android:onClick="viewHistoryButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="workout history"
-        android:layout_marginBottom="30dp"
         android:layout_gravity="center"
-        android:textSize="25dp"
-        android:layout_marginTop="40dp"/>
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="@color/colorAccent"
+        android:text="view workout history"/>
 
-    <ListView
-        android:id="@+id/workout_history_list"
-        android:divider="@color/colorPrimary"
-        android:dividerHeight="1dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ListView>
 
-</LinearLayout>
+
+    </LinearLayout>
+

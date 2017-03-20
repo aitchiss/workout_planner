@@ -50,11 +50,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.workout_contents);
         listView.setAdapter(workoutContentsAdapter);
 
-        ArrayList<Workout> listOfCompletedWorkouts = workoutLog.getCompletedWorkoutsByName(workout.getName());
 
-        WorkoutHistoryAdapter workoutHistoryAdapter = new WorkoutHistoryAdapter(this, listOfCompletedWorkouts);
-        ListView historyListView = (ListView) findViewById(R.id.workout_history_list);
-        historyListView.setAdapter(workoutHistoryAdapter);
     }
 
     public void onEditButtonClick(View button){
@@ -118,6 +114,12 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
     public void cancelDeleteButtonClick(View button){
         Intent intent = new Intent (this, ViewWorkoutActivity.class);
+        intent.putExtra("workout", workout.getName());
+        startActivity(intent);
+    }
+
+    public void viewHistoryButtonClick(View button){
+        Intent intent = new Intent (this, WorkoutHistoryActivity.class);
         intent.putExtra("workout", workout.getName());
         startActivity(intent);
     }

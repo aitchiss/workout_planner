@@ -14,7 +14,7 @@
           android:padding="10dp"
           android:onClick="onAddSetButtonClick"
           android:layout_marginLeft="10dp"
-          android:textSize="20dp"
+          android:textSize="18dp"
           android:textColor="@color/colorAccent"
           android:layout_alignParentLeft="true"/>
 

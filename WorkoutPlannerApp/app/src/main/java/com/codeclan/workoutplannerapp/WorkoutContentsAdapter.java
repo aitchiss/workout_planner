@@ -15,9 +15,9 @@ import java.util.ArrayList;
  * Created by user on 18/03/2017.
  */
 
-public class WorkoutContentsAdapter extends ArrayAdapter<String> {
+public class WorkoutContentsAdapter extends ArrayAdapter<Set> {
 
-    public WorkoutContentsAdapter(Context context, ArrayList<String> setDetails){
+    public WorkoutContentsAdapter(Context context, ArrayList<Set> setDetails){
         super(context, 0, setDetails);
 
     }
@@ -29,14 +29,23 @@ public class WorkoutContentsAdapter extends ArrayAdapter<String> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.workout_contents_list_item, parent,false);
         }
 
-        String currentSet = getItem(position);
+        Set currentSet = getItem(position);
 
 
         TextView setActivity = (TextView) listItemView.findViewById(R.id.set_activity_name);
-        setActivity.setText(currentSet);
+        setActivity.setText(currentSet.getActivity() + ": ");
+
+        TextView setReps = (TextView) listItemView.findViewById(R.id.set_reps_number);
+        setReps.setText(currentSet.getReps().toString() + " reps  x ");
+
+        TextView setWeight = (TextView) listItemView.findViewById(R.id.set_weight_number);
+        setWeight.setText(currentSet.getWeight().toString() + "kg");
 
         ImageView minusSetButton = (ImageView) listItemView.findViewById(R.id.minus_set_button);
         minusSetButton.setTag(currentSet);
+
+        ImageView plusSetButton = (ImageView) listItemView.findViewById(R.id.plus_set_button);
+        plusSetButton.setTag(currentSet);
 
         return listItemView;
     }

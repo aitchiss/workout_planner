@@ -35,6 +35,10 @@ public class Workout {
         this.sets.add(set);
     }
 
+    public void addSetAtIndex(Set set, int index){
+        this.sets.add(index, set);
+    }
+
     public Set getSet(int index){
         return this.sets.get(index);
     }

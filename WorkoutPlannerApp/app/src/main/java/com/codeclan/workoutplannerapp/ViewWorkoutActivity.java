@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,8 +45,8 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         TextView listingView = (TextView) findViewById(R.id.workout_name);
         listingView.setText(workout.getName());
 
-        ArrayList<String> listOfSetDetails = workout.getSetDetailsConciseForm();
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSetDetails);
+        ArrayList<Set> listOfSets = workout.getAllSets();
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
         ListView listView = (ListView) findViewById(R.id.workout_contents);
         listView.setAdapter(workoutContentsAdapter);
 
@@ -72,12 +73,27 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     }
 
     public void onMinusSetButtonClick(View button){
-        String setText = (String) button.getTag();
-        workout.deleteSetFromConciseSetDetails(setText);
+        ImageView minusButton = (ImageView) button;
+        Set setToDelete = (Set) minusButton.getTag();
+        workout.deleteSet(setToDelete);
         appHistory.updateLog(sharedPref, workoutLog);
 
-        ArrayList<String> listOfSetDetails = workout.getSetDetailsConciseForm();
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSetDetails);
+        ArrayList<Set> listOfSets = workout.getAllSets();
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
+        ListView listView = (ListView) findViewById(R.id.workout_contents);
+        listView.setAdapter(workoutContentsAdapter);
+    }
+
+    public void onPlusButtonClick(View button){
+        ImageView plusButton = (ImageView) button;
+        Set setToCopy = (Set) plusButton.getTag();
+        int indexOfSetToCopy = workout.getAllSets().indexOf(setToCopy);
+        Set setToAdd = new Set(setToCopy.getActivityType(), setToCopy.getReps(), setToCopy.getWeight());
+        workout.addSetAtIndex(setToAdd, indexOfSetToCopy);
+
+        appHistory.updateLog(sharedPref, workoutLog);
+        ArrayList<Set> listOfSets = workout.getAllSets();
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
         ListView listView = (ListView) findViewById(R.id.workout_contents);
         listView.setAdapter(workoutContentsAdapter);
     }

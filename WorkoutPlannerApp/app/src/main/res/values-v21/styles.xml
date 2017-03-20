@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="DialogWarning" parent="android:Theme.DeviceDefault.Dialog">
+    <style name="DialogWarning" parent="Theme.AppCompat.NoActionBar">
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:colorForeground">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 </resources>

@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,10 +62,8 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     }
 
     public void onStartButtonClick(View button){
-        workoutLog.startWorkout(workout.getName());
-        appHistory.updateLog(sharedPref, workoutLog);
-
         Intent intent = new Intent(this, PlayWorkoutActivity.class);
+        intent.putExtra("workout", workout.getName());
         startActivity(intent);
     }
 

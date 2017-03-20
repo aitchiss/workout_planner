@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,8 +34,15 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
 
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        String selectedWorkoutName = extras.getString("workout");
+
+        workoutLog.startWorkout(selectedWorkoutName);
+
         workout = workoutLog.getCurrentWorkout();
         set = workoutLog.getCurrentSet();
+
 
         TextView title = (TextView) findViewById(R.id.current_workout_name);
         title.setText("in progress: " + workout.getName());
@@ -85,6 +93,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
             }
 
             set = workoutLog.getCurrentSet();
+
 
             TextView currentSetNumber = (TextView) findViewById(R.id.current_set_number);
 

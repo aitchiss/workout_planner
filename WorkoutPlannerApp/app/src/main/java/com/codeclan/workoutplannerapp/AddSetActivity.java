@@ -18,18 +18,17 @@ public class AddSetActivity extends AppCompatActivity {
     public static final String WORKOUTLOG = "WorkoutLog";
     Workout workout;
     Activity activity;
+    AppHistory appHistory;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_set);
 
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-        String retrievedLog = sharedPref.getString("WorkoutLog", "Nothing here");
-
-        TypeToken<WorkoutLog> workoutLogTypeToken = new TypeToken<WorkoutLog>(){};
-        workoutLog = gson.fromJson(retrievedLog, workoutLogTypeToken.getType());
+        sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
+        appHistory = new AppHistory();
+        workoutLog = appHistory.setup(sharedPref);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -60,11 +59,7 @@ public class AddSetActivity extends AppCompatActivity {
 
         workout.addMultipleSets(activity, numberOfReps, numberOfWeight, numberOfSets);
 
-        Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("WorkoutLog", gson.toJson(workoutLog));
-        editor.apply();
+        appHistory.updateLog(sharedPref, workoutLog);
 
         Intent intent = new Intent(this, EditWorkoutActivity.class);
         intent.putExtra("workout", workout.getName());

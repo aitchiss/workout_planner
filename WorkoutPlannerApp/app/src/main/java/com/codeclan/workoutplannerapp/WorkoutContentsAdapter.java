@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,14 +34,12 @@ public class WorkoutContentsAdapter extends ArrayAdapter<String> {
 
         TextView setActivity = (TextView) listItemView.findViewById(R.id.set_activity_name);
         setActivity.setText(currentSet);
-//        setActivity.setText(currentSet.getActivity() + ": ");
 
+        ImageView minusSetButton = (ImageView) listItemView.findViewById(R.id.minus_set_button);
+        minusSetButton.setTag(currentSet);
 
-//        TextView setReps = (TextView) listItemView.findViewById(R.id.number_of_reps);
-//        setReps.setText(currentSet.getReps().toString() + " reps x ");
-//
-//        TextView setWeight = (TextView) listItemView.findViewById(R.id.weight);
-//        setWeight.setText(currentSet.getWeight().toString() + "kg");
+        ImageView plusSetButton = (ImageView) listItemView.findViewById(R.id.plus_set_button);
+        plusSetButton.setTag(currentSet);
 
 
         return listItemView;

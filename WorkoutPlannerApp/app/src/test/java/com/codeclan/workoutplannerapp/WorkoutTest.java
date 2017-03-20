@@ -75,6 +75,28 @@ public class WorkoutTest {
     }
 
     @Test
+    public void getActivityFromConciseSetDetails(){
+        String setDetails = workout.getSetDetailsConciseForm().get(0);
+        assertEquals("deadlift", workout.getActivityFromConciseSetDetails(setDetails));
+    }
+
+    @Test
+    public void canDeleteASetByActivityName(){
+        workout.deleteSetByName("deadlift");
+        Set newFirstSet = workout.getSet(0);
+        assertEquals(set2, newFirstSet);
+    }
+
+    @Test
+    public void deleteSetByNameOnlyDeletesOneSet(){
+        workout.addSet(set2);
+        workout.deleteSetByName("squat");
+        Set secondSet = workout.getSet(1);
+        assertEquals(set2, secondSet);
+        assertEquals(2, workout.getAllSets().size());
+    }
+
+    @Test
     public void canDeleteSetFromWorkout(){
         workout.deleteSet(set1);
         Set newFirstSet = workout.getSet(0);

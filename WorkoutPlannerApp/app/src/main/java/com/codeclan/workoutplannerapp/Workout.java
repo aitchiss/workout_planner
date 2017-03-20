@@ -117,6 +117,29 @@ public class Workout {
         this.sets.remove(setToDelete);
     }
 
+    public void deleteSetByName(String activityName){
+        for (Set set: this.sets){
+            if (set.getActivity().equals(activityName)){
+                deleteSet(set);
+                return;
+            }
+        }
+    }
+
+    public String getActivityFromConciseSetDetails(String setDetails){
+        String stringWithNoOfSetsRemoved = setDetails.substring(setDetails.indexOf("x"));
+        int colonIndex = setDetails.indexOf(":");
+        int endIndex = (colonIndex - 2);
+        String stringWithRepsRemoved = stringWithNoOfSetsRemoved.substring(2, endIndex);
+
+        return stringWithRepsRemoved;
+    }
+
+    public void deleteSetFromConciseSetDetails(String setDetails){
+        String activity = getActivityFromConciseSetDetails(setDetails);
+        deleteSetByName(activity);
+    }
+
 
 
 

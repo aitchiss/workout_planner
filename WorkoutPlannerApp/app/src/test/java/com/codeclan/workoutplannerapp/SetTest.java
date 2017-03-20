@@ -53,4 +53,6 @@ public class SetTest {
         assertEquals((Integer) 2, set.getReps());
         assertEquals((Integer) 20, set.getWeight());
     }
+
+
 }

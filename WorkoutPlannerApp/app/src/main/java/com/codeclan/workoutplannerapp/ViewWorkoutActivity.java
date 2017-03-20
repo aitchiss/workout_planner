@@ -68,4 +68,15 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PlayWorkoutActivity.class);
         startActivity(intent);
     }
+
+    public void onMinusSetButtonClick(View button){
+        String setText = (String) button.getTag();
+        workout.deleteSetFromConciseSetDetails(setText);
+        appHistory.updateLog(sharedPref, workoutLog);
+
+        ArrayList<String> listOfSetDetails = workout.getSetDetailsConciseForm();
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSetDetails);
+        ListView listView = (ListView) findViewById(R.id.workout_contents);
+        listView.setAdapter(workoutContentsAdapter);
+    }
 }

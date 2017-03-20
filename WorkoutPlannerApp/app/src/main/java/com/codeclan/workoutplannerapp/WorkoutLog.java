@@ -135,4 +135,8 @@ public class WorkoutLog {
         }
         return latestWorkout.getCompletedDate();
     }
+
+    public void deleteWorkoutTemplate(Workout workout){
+        this.workoutTemplates.remove(workout);
+    }
 }

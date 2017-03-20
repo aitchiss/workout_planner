@@ -135,5 +135,11 @@ public class WorkoutLogTest {
         assertEquals("19-Mar-2017", workoutLog.getWorkoutTemplate("test workout").getTemplateLastUsedDate());
     }
 
+    @Test
+    public void canDeleteAWorkoutTemplate(){
+        workoutLog.deleteWorkoutTemplate(workout);
+        assertEquals(1, workoutLog.getAllWorkoutTemplates().size());
+    }
+
 
 }

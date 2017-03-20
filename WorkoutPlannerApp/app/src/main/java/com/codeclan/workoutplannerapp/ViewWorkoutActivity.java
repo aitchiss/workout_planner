@@ -80,5 +80,13 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         listView.setAdapter(workoutContentsAdapter);
     }
 
+    public void deleteWorkoutButtonClick(View button){
+        workoutLog.deleteWorkoutTemplate(workout);
+        appHistory.updateLog(sharedPref, workoutLog);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 
 }

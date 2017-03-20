@@ -27,6 +27,17 @@
         android:layout_marginBottom="15dp"
         android:text="select activity"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:text="custom activity"
+        android:id="@+id/add_custom_set"
+        android:onClick="addCustomSetClick"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="@color/colorAccent"
+        android:background="@color/colorBackground"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content" />
+
     <ListView
         android:id="@+id/available_activities_list"
         android:layout_width="wrap_content"

@@ -15,12 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewWorkoutActivity"/>
+        <activity android:name=".ViewWorkoutActivity" />
         <activity android:name=".CreateWorkoutActivity" />
         <activity android:name=".AddSetActivity" />
         <activity android:name=".EditWorkoutActivity" />
         <activity android:name=".PlayWorkoutActivity" />
-        <activity android:name=".WorkoutHistoryActivity"></activity>
+        <activity android:name=".WorkoutHistoryActivity" />
+        <activity android:name=".AddCustomSetActivity"></activity>
     </application>
 
 </manifest>

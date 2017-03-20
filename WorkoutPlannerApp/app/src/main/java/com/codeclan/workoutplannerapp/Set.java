@@ -7,6 +7,7 @@ package com.codeclan.workoutplannerapp;
 public class Set {
 
     private Activity activity;
+    private String customActivity;
     private Integer reps;
     private Integer weight;
 
@@ -16,7 +17,16 @@ public class Set {
         this.weight = weight;
     }
 
+    public Set(String activity, Integer reps, Integer weight){
+        this.customActivity = activity;
+        this.reps = reps;
+        this.weight = weight;
+    }
+
     public String getActivity(){
+        if (this.activity == null){
+            return this.customActivity;
+        }
         return this.activity.toString().toLowerCase();
     }
 

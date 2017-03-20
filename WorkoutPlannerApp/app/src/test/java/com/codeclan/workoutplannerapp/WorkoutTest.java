@@ -103,6 +103,12 @@ public class WorkoutTest {
         assertEquals(set2, newFirstSet);
     }
 
+    @Test
+    public void addMultipleSetsWorksForStringCustomActivity(){
+        workout.addMultipleSets("leg raises", 8, 20, 2);
+        assertEquals("leg raises", workout.getAllSets().get(3).getActivity());
+    }
+
 
 
 

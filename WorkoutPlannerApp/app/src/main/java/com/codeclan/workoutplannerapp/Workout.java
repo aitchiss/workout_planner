@@ -54,6 +54,13 @@ public class Workout {
         }
     }
 
+    public void addMultipleSets(String activity, int reps, int weight, int number_of_sets){
+        for (int i = 0; i < number_of_sets; i++){
+            Set set = new Set(activity, reps, weight);
+            addSet(set);
+        }
+    }
+
     public void markComplete(){
         completedDate = new Date();
     }
@@ -76,9 +83,6 @@ public class Workout {
         return formattedDate;
     }
 
-    public Date getRawCompletedDate(){
-        return this.completedDate;
-    }
 
     public int getNumberOfSimilarSets(String activityName){
         int counter = 0;

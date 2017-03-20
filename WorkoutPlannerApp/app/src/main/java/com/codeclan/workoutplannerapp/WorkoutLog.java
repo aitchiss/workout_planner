@@ -52,13 +52,20 @@ public class WorkoutLog {
         Workout newWorkout = new Workout(workout.getName());
 
         for (Set set : workout.getAllSets()){
-            Activity activity = set.getActivityType();
-            int reps = set.getReps();
-            int weight = set.getWeight();
-            Set newSet = new Set(activity, reps, weight);
-            newWorkout.addSet(newSet);
+            if (set.getActivityType() == null){
+                String activityName = set.getActivity();
+                int reps = set.getReps();
+                int weight = set.getWeight();
+                Set newSet = new Set(activityName, reps, weight);
+                newWorkout.addSet(newSet);
+            } else{
+                Activity activity = set.getActivityType();
+                int reps = set.getReps();
+                int weight = set.getWeight();
+                Set newSet = new Set(activity, reps, weight);
+                newWorkout.addSet(newSet);
+            }
         }
-
         currentWorkout = newWorkout;
         currentSet = currentWorkout.getSet(0);
     }
@@ -122,19 +129,6 @@ public class WorkoutLog {
         }
     }
 
-    public String getLastCompletedDate(String workoutName){
-
-        ArrayList<Workout> matchingWorkouts = getCompletedWorkoutsByName(workoutName);
-        Date completedDate = matchingWorkouts.get(0).getRawCompletedDate();
-        Workout latestWorkout = matchingWorkouts.get(0);
-        for (Workout workout : matchingWorkouts){
-            Date workoutCompletedDate = workout.getRawCompletedDate();
-            if (workoutCompletedDate.after(completedDate)){
-                latestWorkout = workout;
-            }
-        }
-        return latestWorkout.getCompletedDate();
-    }
 
     public void deleteWorkoutTemplate(Workout workout){
         this.workoutTemplates.remove(workout);

@@ -54,5 +54,11 @@ public class SetTest {
         assertEquals((Integer) 20, set.getWeight());
     }
 
+    @Test
+    public void canUseStringCustomActivityConstructor(){
+        Set customSet = new Set("push ups", 10, 0);
+        assertEquals("push ups", customSet.getActivity());
+    }
+
 
 }

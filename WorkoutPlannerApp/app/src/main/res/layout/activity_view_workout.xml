@@ -8,6 +8,7 @@
         tools:context="com.codeclan.workoutplannerapp.ViewWorkoutActivity"
         android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/workout_name"
         android:layout_gravity="center"
@@ -45,11 +46,10 @@
     </LinearLayout>
 
 
-
     <ListView
         android:id="@+id/workout_contents"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="170dp"></ListView>
 
     <Button
         android:id="@+id/start_workout_button"

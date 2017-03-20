@@ -33,8 +33,6 @@ public class CreateWorkoutActivity extends AppCompatActivity {
     }
 
 
-
-
     public void onSaveButtonClick(View view){
 
         EditText workoutNameInput = (EditText) findViewById(R.id.workout_name_input);

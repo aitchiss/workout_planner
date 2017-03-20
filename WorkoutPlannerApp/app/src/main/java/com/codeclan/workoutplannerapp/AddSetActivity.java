@@ -61,7 +61,7 @@ public class AddSetActivity extends AppCompatActivity {
 
         appHistory.updateLog(sharedPref, workoutLog);
 
-        Intent intent = new Intent(this, EditWorkoutActivity.class);
+        Intent intent = new Intent(this, ViewWorkoutActivity.class);
         intent.putExtra("workout", workout.getName());
         startActivity(intent);
     }

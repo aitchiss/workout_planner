@@ -41,13 +41,7 @@ public class EditWorkoutActivity extends AppCompatActivity {
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
         TextView title = (TextView) findViewById(R.id.workout_to_edit);
-        title.setText("edit workout: " + workout.getName());
-
-        ArrayList<Set> listOfSets = workout.getAllSets();
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
-        ListView listView = (ListView) findViewById(R.id.workout_contents);
-
-        listView.setAdapter(workoutContentsAdapter);
+        title.setText("add to workout: " + workout.getName());
 
         ArrayList<Activity> allActivities = Activity.getAllActivities();
 
@@ -68,36 +62,8 @@ public class EditWorkoutActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onDoneEditingButtonClick(View button){
-        Intent intent = new Intent(this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workout.getName());
-        startActivity(intent);
-    }
 
-    public void onMinusSetButtonClick(View button){
-        ImageView minusButton = (ImageView) button;
-        Set setToDelete = (Set) minusButton.getTag();
-        workout.deleteSet(setToDelete);
-        appHistory.updateLog(sharedPref, workoutLog);
 
-        ArrayList<Set> listOfSets = workout.getAllSets();
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
-        ListView listView = (ListView) findViewById(R.id.workout_contents);
-        listView.setAdapter(workoutContentsAdapter);
-    }
 
-    public void onPlusButtonClick(View button){
-        ImageView plusButton = (ImageView) button;
-        Set setToCopy = (Set) plusButton.getTag();
-        int indexOfSetToCopy = workout.getAllSets().indexOf(setToCopy);
-        Set setToAdd = new Set(setToCopy.getActivityType(), setToCopy.getReps(), setToCopy.getWeight());
-        workout.addSetAtIndex(setToAdd, indexOfSetToCopy);
-
-        appHistory.updateLog(sharedPref, workoutLog);
-        ArrayList<Set> listOfSets = workout.getAllSets();
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
-        ListView listView = (ListView) findViewById(R.id.workout_contents);
-        listView.setAdapter(workoutContentsAdapter);
-    }
 }
 

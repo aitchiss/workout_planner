@@ -12,27 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:layout_marginBottom="20dp"
         android:padding="20dp"/>
 
-    <ListView
-        android:id="@+id/workout_contents"
-        android:layout_marginBottom="18dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ListView>
 
-    <Button
-        android:id="@+id/done_with_edit_button"
-        android:onClick="onDoneEditingButtonClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:text="done"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,7 +25,7 @@
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
-        android:text="add another activity"/>
+        android:text="select activity"/>
 
     <ListView
         android:id="@+id/available_activities_list"

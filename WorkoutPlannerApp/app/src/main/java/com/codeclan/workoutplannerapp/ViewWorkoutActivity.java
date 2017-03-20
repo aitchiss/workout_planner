@@ -1,5 +1,6 @@
 package com.codeclan.workoutplannerapp;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -82,12 +83,25 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     }
 
     public void deleteWorkoutButtonClick(View button){
+
+        FragmentManager fm = getFragmentManager();
+        DeleteWarning dialogFragment = new DeleteWarning ();
+        dialogFragment.show(fm, "Sample Fragment");
+    }
+
+    public void confirmDeleteButtonClick(View button){
         workoutLog.deleteWorkoutTemplate(workout);
         appHistory.updateLog(sharedPref, workoutLog);
 
         Toast.makeText(this, "Workout Deleted", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void cancelDeleteButtonClick(View button){
+        Intent intent = new Intent (this, ViewWorkoutActivity.class);
+        intent.putExtra("workout", workout.getName());
         startActivity(intent);
     }
 

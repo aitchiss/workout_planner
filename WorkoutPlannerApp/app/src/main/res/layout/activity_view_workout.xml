@@ -36,10 +36,10 @@
             android:onClick="onEditButtonClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit"
+            android:src="@drawable/ic_action_name"
             android:tint="@color/colorAccent"
             android:padding="5dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginBottom="30dp"
             />
 

@@ -54,11 +54,15 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
         displaySetProgress(count);
 
-        EditText numberOfReps = (EditText) findViewById(R.id.current_reps);
-        numberOfReps.setText(set.getReps().toString());
+        displayNumberOfReps();
 
         EditText weight = (EditText) findViewById(R.id.current_weight);
         weight.setText(set.getWeight().toString());
+    }
+
+    public void displayNumberOfReps(){
+        EditText numberOfReps = (EditText) findViewById(R.id.current_reps);
+        numberOfReps.setText(set.getReps().toString());
     }
 
     public void displaySetProgress(Integer count){
@@ -98,8 +102,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
             displaySetProgress(count);
 
-            EditText newNumberOfReps = (EditText) findViewById(R.id.current_reps);
-            newNumberOfReps.setText(set.getReps().toString());
+            displayNumberOfReps();
 
             EditText weight = (EditText) findViewById(R.id.current_weight);
             weight.setText(set.getWeight().toString());

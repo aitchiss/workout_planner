@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,13 +16,18 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CreateWorkoutActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
+    public static final String IDHISTORY = "IDHistory";
     AppHistory appHistory;
     SharedPreferences sharedPref;
+    SharedPreferences sharedPrefID;
+    private static AtomicInteger nextId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +35,13 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_workout);
 
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
+        sharedPrefID = getSharedPreferences(IDHISTORY, Context.MODE_PRIVATE);
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
+
+        nextId = new AtomicInteger();
+        nextId.set(appHistory.setupID(sharedPrefID));
+        Log.d("id: ", String.valueOf(nextId.incrementAndGet()));
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Create new workout");
@@ -46,7 +57,11 @@ public class CreateWorkoutActivity extends AppCompatActivity {
             workoutName = "my workout";
         }
 
-        WorkoutTemplate workout = new WorkoutTemplate(workoutName);
+        int id = nextId.incrementAndGet();
+        appHistory.updateIdLog(sharedPrefID, id);
+        Log.d("create id: ", String.valueOf(id));
+
+        WorkoutTemplate workout = new WorkoutTemplate(workoutName, id);
         int workoutId = workout.getId();
         workoutLog.addWorkoutTemplate(workout);
 

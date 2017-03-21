@@ -24,11 +24,11 @@ public class WorkoutLogTest {
     public void before(){
         workoutLog = new WorkoutLog();
 
-        workoutTemplate = new WorkoutTemplate("test workout");
+        workoutTemplate = new WorkoutTemplate("test workout", 1);
         workoutTemplate.addMultipleSets(Activity.BENCHPRESS, 5, 35, 3);
         workoutTemplate.addMultipleSets(Activity.SQUAT, 6, 50, 3);
 
-        workoutTemplate2 = new WorkoutTemplate("second test workout");
+        workoutTemplate2 = new WorkoutTemplate("second test workout", 2);
         workoutTemplate2.addMultipleSets(Activity.LUNGES, 10, 25, 4);
 
         workoutLog.addWorkoutTemplate(workoutTemplate);
@@ -100,7 +100,7 @@ public class WorkoutLogTest {
 
     @Test
     public void anotherSetRemainingReturnsFalseIfFinalSet(){
-        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout");
+        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout", 3);
         shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
         workoutLog.addWorkoutTemplate(shortWorkout);
         workoutLog.startWorkout(workoutTemplate.getId());
@@ -111,7 +111,7 @@ public class WorkoutLogTest {
 
     @Test
     public void anotherSetRemainingReturnsTrueIfNotFinalSet(){
-        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout");
+        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout", 3);
         shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
         workoutLog.addWorkoutTemplate(shortWorkout);
         workoutLog.startWorkout(shortWorkout.getId());
@@ -120,7 +120,7 @@ public class WorkoutLogTest {
 
     @Test
     public void finishCurrentSetEndsWorkoutIfLastSet(){
-        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout");
+        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout", 3);
         shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
         workoutLog.addWorkoutTemplate(shortWorkout);
         workoutLog.startWorkout(shortWorkout.getId());

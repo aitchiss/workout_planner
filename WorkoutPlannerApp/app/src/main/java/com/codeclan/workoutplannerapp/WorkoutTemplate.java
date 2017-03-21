@@ -15,14 +15,15 @@ public class WorkoutTemplate implements WorkoutType {
     private String name;
     private ArrayList<Set> sets;
     private Date templateLastUsedDate;
-    private static AtomicInteger nextId = new AtomicInteger();
+//    private static AtomicInteger nextId = new AtomicInteger();
     private int id;
 
-    public WorkoutTemplate(String name) {
+    public WorkoutTemplate(String name, int id) {
         this.name = name;
         this.sets = new ArrayList<Set>();
         this.templateLastUsedDate = null;
-        this.id = nextId.incrementAndGet();
+//        this.id = nextId.incrementAndGet();
+        this.id = id;
     }
 
     public int getId(){

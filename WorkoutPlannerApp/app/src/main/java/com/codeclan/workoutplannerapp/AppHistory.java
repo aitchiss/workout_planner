@@ -43,4 +43,27 @@ public class AppHistory {
         editor.putString("WorkoutLog", gson.toJson(workoutLog));
         editor.apply();
     }
+
+    public int setupID(SharedPreferences sharedPref){
+        Gson gson = new Gson();
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        String retrievedIDLog = sharedPref.getString("IDHistory", "Nothing here");
+        if (retrievedIDLog.equals("Nothing here")){
+            editor.putString("IDHistory", "1");
+            editor.apply();
+            return 1;
+        } else {
+            TypeToken<String> IDType = new TypeToken<String>(){};
+            String lastID = gson.fromJson(retrievedIDLog, IDType.getType());
+            return Integer.valueOf(lastID);
+        }
+    }
+
+    public void updateIdLog(SharedPreferences sharedPref, Integer latestID){
+        Gson gson = new Gson();
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("IDHistory", gson.toJson(String.valueOf(latestID)));
+        editor.apply();
+    }
 }

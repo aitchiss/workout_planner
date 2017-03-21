@@ -20,7 +20,7 @@ public class WorkoutTemplateTest {
 
     @Before
     public void before(){
-        workoutTemplate = new WorkoutTemplate("legs day");
+        workoutTemplate = new WorkoutTemplate("legs day", 1);
         set1 = new Set(Activity.DEADLIFT, 8, 70);
         set2 = new Set(Activity.SQUAT, 8, 55);
         workoutTemplate.addSet(set1);
@@ -85,13 +85,13 @@ public class WorkoutTemplateTest {
 
     @Test
     public void workoutHasUniqueId(){
-        WorkoutTemplate workoutTemplate2 = new WorkoutTemplate("test again");
+        WorkoutTemplate workoutTemplate2 = new WorkoutTemplate("test again", 2);
         assertNotEquals(workoutTemplate.getId(), workoutTemplate2.getId());
     }
 
     @Test
     public void canAddWithSuperset(){
-        WorkoutTemplate superSetTest = new WorkoutTemplate("super set test");
+        WorkoutTemplate superSetTest = new WorkoutTemplate("super set test", 2);
         Set set1 = new Set(Activity.BENCHPRESS, 5, 30);
         Set set2 = new Set(Activity.LUNGES, 8, 25);
         superSetTest.addMultipleWithSuperSet(set1, set2, 3);

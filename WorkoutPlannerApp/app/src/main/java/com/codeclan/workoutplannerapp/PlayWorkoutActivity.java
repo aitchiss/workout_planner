@@ -21,7 +21,6 @@ public class PlayWorkoutActivity extends AppCompatActivity {
     public static final String WORKOUTLOG = "WorkoutLog";
     Workout workout;
     Set set;
-//    Integer count;
     AppHistory appHistory;
     SharedPreferences sharedPref;
 

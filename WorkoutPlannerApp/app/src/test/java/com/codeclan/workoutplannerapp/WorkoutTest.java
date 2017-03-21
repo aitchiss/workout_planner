@@ -24,7 +24,7 @@ public class WorkoutTest {
     public void before(){
         set1 = new Set(Activity.DEADLIFT, 8, 70);
         set2 = new Set(Activity.SQUAT, 8, 55);
-        workoutTemplate = new WorkoutTemplate("legs day");
+        workoutTemplate = new WorkoutTemplate("legs day", 1);
         workoutTemplate.addSet(set1);
         workoutTemplate.addSet(set2);
         workout = new Workout(workoutTemplate);

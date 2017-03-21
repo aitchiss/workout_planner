@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -109,7 +111,10 @@ public class WorkoutTest {
         assertEquals("leg raises", workout.getAllSets().get(3).getActivity());
     }
 
-
-
+    @Test
+    public void workoutHasUniqueId(){
+        Workout workout2 = new Workout("test again");
+        assertNotEquals(workout.getId(), workout2.getId());
+    }
 
 }

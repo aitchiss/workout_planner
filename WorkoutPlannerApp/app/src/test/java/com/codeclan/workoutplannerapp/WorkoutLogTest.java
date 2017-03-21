@@ -141,5 +141,11 @@ public class WorkoutLogTest {
         assertEquals(1, workoutLog.getAllWorkoutTemplates().size());
     }
 
+    @Test
+    public void canGetWorkoutById(){
+        Workout foundWorkout = workoutLog.getWorkoutTemplate(workout.getId());
+        assertEquals(workout, foundWorkout);
+    }
+
 
 }

@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by user on 16/03/2017.
@@ -19,12 +20,19 @@ public class Workout {
     private ArrayList<Set> sets;
     private Date completedDate;
     private Date templateLastUsedDate;
+    private static AtomicInteger nextId = new AtomicInteger();
+    private int id;
 
 
     public Workout(String name){
         this.name = name;
         this.sets = new ArrayList<Set>();
         this.templateLastUsedDate = null;
+        this.id = nextId.incrementAndGet();
+    }
+
+    public int getId(){
+        return this.id;
     }
 
     public String getName() {
@@ -143,16 +151,6 @@ public class Workout {
 
         return stringWithRepsRemoved;
     }
-
-
-
-    public void deleteSetFromConciseSetDetails(String setDetails){
-        String activity = getActivityFromConciseSetDetails(setDetails);
-        deleteSetByName(activity);
-    }
-
-
-
 
 
 }

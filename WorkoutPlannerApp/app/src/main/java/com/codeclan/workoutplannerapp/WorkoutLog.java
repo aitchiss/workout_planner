@@ -35,6 +35,15 @@ public class WorkoutLog {
         return null;
     }
 
+    public Workout getWorkoutTemplate(int workoutId){
+        for (Workout workout : workoutTemplates){
+            if (workout.getId() == workoutId){
+                return workout;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Workout> getAllWorkoutTemplates(){
         return this.workoutTemplates;
     }

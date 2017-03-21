@@ -30,8 +30,9 @@ public class AddCustomSetActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        String selectedWorkoutName = extras.getString("workout");
-        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
+//        String selectedWorkoutName = extras.getString("workout");
+        int selectedWorkoutId = extras.getInt("workout");
+        workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Adding to: " + workout.getName());
@@ -56,7 +57,7 @@ public class AddCustomSetActivity extends AppCompatActivity {
         appHistory.updateLog(sharedPref, workoutLog);
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workout.getName());
+        intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
 }

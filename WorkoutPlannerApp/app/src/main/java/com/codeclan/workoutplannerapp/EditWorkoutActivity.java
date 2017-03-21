@@ -67,7 +67,7 @@ public class EditWorkoutActivity extends AppCompatActivity {
 
     public void addCustomSetClick(View button){
         Intent intent = new Intent(this, AddCustomSetActivity.class);
-        intent.putExtra("workout", workout.getName());
+        intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
 

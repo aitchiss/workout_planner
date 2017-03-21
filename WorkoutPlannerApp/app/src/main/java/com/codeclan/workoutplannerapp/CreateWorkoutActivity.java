@@ -42,12 +42,13 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         EditText workoutNameInput = (EditText) findViewById(R.id.workout_name_input);
         String workoutName = workoutNameInput.getText().toString();
         WorkoutTemplate workout = new WorkoutTemplate(workoutName);
+        int workoutId = workout.getId();
         workoutLog.addWorkoutTemplate(workout);
 
         appHistory.updateLog(sharedPref, workoutLog);
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workoutName);
+        intent.putExtra("workout", workoutId);
         startActivity(intent);
     }
 }

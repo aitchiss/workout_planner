@@ -34,8 +34,9 @@ public class AddSetActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        String selectedWorkoutName = extras.getString("workout");
-        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
+//        String selectedWorkoutName = extras.getString("workout");
+        int selectedWorkoutId = extras.getInt("workout");
+        workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
         String selectedActivityName = extras.getString("activity");
         activity = Activity.valueOf(selectedActivityName);
@@ -63,7 +64,7 @@ public class AddSetActivity extends AppCompatActivity {
         appHistory.updateLog(sharedPref, workoutLog);
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workout.getName());
+        intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
 }

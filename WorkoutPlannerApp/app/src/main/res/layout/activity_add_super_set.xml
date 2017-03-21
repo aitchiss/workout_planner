@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.codeclan.workoutplannerapp.AddSetActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.codeclan.workoutplannerapp.AddSuperSetActivity">
+
 
 
     <TextView
@@ -18,25 +19,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:padding="10dp"
-        android:textSize="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Number of sets: "/>
-
-    <EditText
-        android:padding="10dp"
-        android:textSize="15dp"
-        android:width="50dp"
-        android:textAlignment="center"
-        android:id="@+id/choose_set_number"
-        android:layout_gravity="center"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorAccent"/>
 
     <TextView
         android:padding="10dp"
@@ -79,8 +61,6 @@
         android:layout_height="wrap_content" />
 
 
-
-
     <Button
         android:id="@+id/confirm_add_set_button"
         android:onClick="confirmAddSetButtonClick"
@@ -91,14 +71,5 @@
         android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/add_with_superset_button"
-        android:onClick="onAddSuperSetButtonClick"
-        android:text="add with superset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
 
 </LinearLayout>

@@ -91,8 +91,8 @@ public class WorkoutTemplate implements WorkoutType {
 
     public void addMultipleWithSuperSet(Set set1, Set set2, int noOfSets){
         for (int i = 0; i < noOfSets; i++){
-            Set setMain = new Set(set1.getActivityType(), set1.getReps(), set1.getWeight());
-            Set setSuperSet = new Set(set2.getActivityType(), set2.getReps(), set2.getWeight());
+            Set setMain = new Set(set1.getActivity(), set1.getReps(), set1.getWeight());
+            Set setSuperSet = new Set(set2.getActivity(), set2.getReps(), set2.getWeight());
             addSet(setMain);
             addSet(setSuperSet);
         }

@@ -23,10 +23,24 @@ public class Workout {
 
 
     public Workout(WorkoutTemplate workoutTemplate){
-        this.name = workoutTemplate.getName();
-        this.sets = workoutTemplate.getAllSets();
         this.id = workoutTemplate.getId();
-
+        this.name = workoutTemplate.getName();
+        this.sets = new ArrayList<Set>();
+        for (Set set : workoutTemplate.getAllSets()){
+            if (set.getActivityType() == null){
+                String activity = set.getActivity();
+                Integer reps = set.getReps();
+                Integer weight = set.getWeight();
+                Set setToAdd = new Set(activity, reps, weight);
+                this.sets.add(setToAdd);
+            } else{
+                Activity activity = set.getActivityType();
+                Integer reps = set.getReps();
+                Integer weight = set.getWeight();
+                Set setToAdd = new Set(activity, reps, weight);
+                this.sets.add(setToAdd);
+            }
+        }
     }
 
     public int getId(){

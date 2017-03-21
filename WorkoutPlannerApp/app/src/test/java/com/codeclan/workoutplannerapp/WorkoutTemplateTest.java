@@ -89,4 +89,16 @@ public class WorkoutTemplateTest {
         assertNotEquals(workoutTemplate.getId(), workoutTemplate2.getId());
     }
 
+    @Test
+    public void canAddWithSuperset(){
+        WorkoutTemplate superSetTest = new WorkoutTemplate("super set test");
+        Set set1 = new Set(Activity.BENCHPRESS, 5, 30);
+        Set set2 = new Set(Activity.LUNGES, 8, 25);
+        superSetTest.addMultipleWithSuperSet(set1, set2, 3);
+        assertEquals(6, superSetTest.getAllSets().size());
+        assertEquals(Activity.BENCHPRESS, superSetTest.getAllSets().get(0).getActivityType());
+        assertEquals(Activity.BENCHPRESS, superSetTest.getAllSets().get(0).getActivityType());
+        assertEquals(Activity.LUNGES, superSetTest.getAllSets().get(1).getActivityType());
+    }
+
 }

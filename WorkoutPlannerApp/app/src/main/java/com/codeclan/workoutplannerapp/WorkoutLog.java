@@ -79,6 +79,7 @@ public class WorkoutLog {
         currentSet = currentWorkout.getSet(0);
     }
 
+
     public Set getCurrentSet() {
         return currentSet;
     }

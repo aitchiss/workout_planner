@@ -111,10 +111,10 @@ public class WorkoutTest {
         assertEquals("leg raises", workout.getAllSets().get(3).getActivity());
     }
 
-    @Test
-    public void workoutHasUniqueId(){
-        Workout workout2 = new Workout("test again");
-        assertNotEquals(workout.getId(), workout2.getId());
-    }
+//    @Test
+//    public void workoutHasUniqueId(){
+//        Workout workout2 = new Workout("test again");
+//        assertNotEquals(workout.getId(), workout2.getId());
+//    }
 
 }

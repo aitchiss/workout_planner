@@ -19,16 +19,13 @@ public class Workout {
     private String name;
     private ArrayList<Set> sets;
     private Date completedDate;
-    private Date templateLastUsedDate;
-    private static AtomicInteger nextId = new AtomicInteger();
     private int id;
 
 
-    public Workout(String name){
+    public Workout(String name, int id){
         this.name = name;
         this.sets = new ArrayList<Set>();
-        this.templateLastUsedDate = null;
-        this.id = nextId.incrementAndGet();
+        this.id = id;
     }
 
     public int getId(){
@@ -39,14 +36,6 @@ public class Workout {
         return name;
     }
 
-    public void addSet(Set set){
-        this.sets.add(set);
-    }
-
-    public void addSetAtIndex(Set set, int index){
-        this.sets.add(index, set);
-    }
-
     public Set getSet(int index){
         return this.sets.get(index);
     }
@@ -55,42 +44,14 @@ public class Workout {
         return this.sets;
     }
 
-    public void addMultipleSets(Activity activity, int reps, int weight, int number_of_sets){
-        for (int i = 0; i < number_of_sets; i++){
-            Set set = new Set(activity, reps, weight);
-            addSet(set);
-        }
-    }
-
-    public void addMultipleSets(String activity, int reps, int weight, int number_of_sets){
-        for (int i = 0; i < number_of_sets; i++){
-            Set set = new Set(activity, reps, weight);
-            addSet(set);
-        }
-    }
-
     public void markComplete(){
         completedDate = new Date();
-    }
-
-    public void templateUpdateLastUsedDate(){
-        this.templateLastUsedDate = new Date();
-    }
-
-    public String getTemplateLastUsedDate(){
-        if (this.templateLastUsedDate == null){
-            return "never";
-        } else {
-            String formattedDate = DateFormat.getDateInstance().format(this.templateLastUsedDate);
-            return formattedDate;
-        }
     }
 
     public String getCompletedDate(){
         String formattedDate = DateFormat.getDateInstance().format(this.completedDate);
         return formattedDate;
     }
-
 
     public int getNumberOfSimilarSets(String activityName){
         int counter = 0;
@@ -120,27 +81,13 @@ public class Workout {
         return conciseList;
     }
 
-
-    public String getWorkoutPeformance(){
+    public String getWorkoutPerformance(){
         String performanceInfo = "";
         for (String setInfo : getSetDetailsConciseForm()){
             performanceInfo += setInfo + "\n";
         }
 
         return performanceInfo;
-    }
-
-    public void deleteSet(Set setToDelete){
-        this.sets.remove(setToDelete);
-    }
-
-    public void deleteSetByName(String activityName){
-        for (Set set: this.sets){
-            if (set.getActivity().equals(activityName)){
-                deleteSet(set);
-                return;
-            }
-        }
     }
 
     public String getActivityFromConciseSetDetails(String setDetails){

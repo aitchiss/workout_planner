@@ -31,7 +31,6 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play_workout);
 
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
 
@@ -40,7 +39,6 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         String selectedWorkoutName = extras.getString("workout");
 
         workoutLog.startWorkout(selectedWorkoutName);
-
         workout = workoutLog.getCurrentWorkout();
         set = workoutLog.getCurrentSet();
 
@@ -90,10 +88,10 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         if (workoutLog.getCurrentSet() == null){
 
             Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG).show();
-
             Intent intent = new Intent(this, ViewWorkoutActivity.class);
             intent.putExtra("workout", workout.getName());
             startActivity(intent);
+
         } else {
 
             if (set.getActivity().equals(workoutLog.getCurrentSet().getActivity())){
@@ -103,7 +101,6 @@ public class PlayWorkoutActivity extends AppCompatActivity {
             }
 
             set = workoutLog.getCurrentSet();
-
             displaySetProgress(count);
             displayNumberOfReps();
             displayWeight();

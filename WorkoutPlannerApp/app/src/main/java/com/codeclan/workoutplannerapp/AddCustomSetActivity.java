@@ -1,5 +1,6 @@
 package com.codeclan.workoutplannerapp;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,24 +40,35 @@ public class AddCustomSetActivity extends AppCompatActivity {
 
     public void addCustomSetButtonClick(View button){
 
-        EditText activity = (EditText) findViewById(R.id.enter_custom_activity);
-        String activityName = activity.getText().toString();
-
         EditText numberOfSetsInput = (EditText) findViewById(R.id.choose_set_number);
         Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
 
         EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
         Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
-        EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-        Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+        if (numberOfReps.equals(0) || numberOfSets.equals(0)){
+            errorDialog();
+        } else{
+            EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
+            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
 
-        workout.addMultipleSets(activityName, numberOfReps, numberOfWeight, numberOfSets);
+            EditText activity = (EditText) findViewById(R.id.enter_custom_activity);
+            String activityName = activity.getText().toString();
 
-        appHistory.updateLog(sharedPref, workoutLog);
+            workout.addMultipleSets(activityName, numberOfReps, numberOfWeight, numberOfSets);
 
-        Intent intent = new Intent(this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workout.getId());
-        startActivity(intent);
+            appHistory.updateLog(sharedPref, workoutLog);
+
+            Intent intent = new Intent(this, ViewWorkoutActivity.class);
+            intent.putExtra("workout", workout.getId());
+            startActivity(intent);
+        }
+    }
+
+    public void errorDialog(){
+        FragmentManager fm = getFragmentManager();
+        InputErrorWarning dialogFragment = new InputErrorWarning ();
+        setTheme(R.style.DialogWarning);
+        dialogFragment.show(fm, "Error");
     }
 }

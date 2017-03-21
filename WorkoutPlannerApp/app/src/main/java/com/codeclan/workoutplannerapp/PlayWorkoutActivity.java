@@ -50,19 +50,21 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         TextView currentActivity = (TextView) findViewById(R.id.current_activity_name);
         currentActivity.setText(set.getActivity());
 
-        TextView currentSetNumber = (TextView) findViewById(R.id.current_set_number);
-
         count = 1;
 
-        Integer numberOfSimilarSets = workout.getNumberOfSimilarSets(set.getActivity());
-        currentSetNumber.setText(count.toString() + " of " + numberOfSimilarSets.toString());
+        displaySetProgress(count);
 
         EditText numberOfReps = (EditText) findViewById(R.id.current_reps);
         numberOfReps.setText(set.getReps().toString());
 
         EditText weight = (EditText) findViewById(R.id.current_weight);
         weight.setText(set.getWeight().toString());
+    }
 
+    public void displaySetProgress(Integer count){
+        TextView currentSetNumber = (TextView) findViewById(R.id.current_set_number);
+        Integer numberOfSimilarSets = workout.getNumberOfSimilarSets(set.getActivity());
+        currentSetNumber.setText(count.toString() + " of " + numberOfSimilarSets.toString());
     }
 
     public void finishSetButtonClicked(View button){
@@ -94,11 +96,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
             set = workoutLog.getCurrentSet();
 
-
-            TextView currentSetNumber = (TextView) findViewById(R.id.current_set_number);
-
-            Integer numberOfSimilarSets = workout.getNumberOfSimilarSets(set.getActivity());
-            currentSetNumber.setText(count.toString() + " of " + numberOfSimilarSets.toString());
+            displaySetProgress(count);
 
             EditText newNumberOfReps = (EditText) findViewById(R.id.current_reps);
             newNumberOfReps.setText(set.getReps().toString());

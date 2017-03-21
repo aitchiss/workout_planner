@@ -34,6 +34,9 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_workout);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);

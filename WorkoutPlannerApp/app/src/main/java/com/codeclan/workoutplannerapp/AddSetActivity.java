@@ -1,5 +1,6 @@
 package com.codeclan.workoutplannerapp;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,7 +35,6 @@ public class AddSetActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-//        String selectedWorkoutName = extras.getString("workout");
         int selectedWorkoutId = extras.getInt("workout");
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
@@ -56,15 +56,27 @@ public class AddSetActivity extends AppCompatActivity {
         EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
         Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
-        EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-        Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+        if (numberOfSets.equals(0) || numberOfReps.equals(0)){
+            errorDialog();
+        } else {
+            EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
+            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
 
-        workout.addMultipleSets(activity, numberOfReps, numberOfWeight, numberOfSets);
+            workout.addMultipleSets(activity, numberOfReps, numberOfWeight, numberOfSets);
 
-        appHistory.updateLog(sharedPref, workoutLog);
+            appHistory.updateLog(sharedPref, workoutLog);
 
-        Intent intent = new Intent(this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workout.getId());
-        startActivity(intent);
+            Intent intent = new Intent(this, ViewWorkoutActivity.class);
+            intent.putExtra("workout", workout.getId());
+            startActivity(intent);
+        }
+
+    }
+
+    public void errorDialog(){
+        FragmentManager fm = getFragmentManager();
+        InputErrorWarning dialogFragment = new InputErrorWarning ();
+        setTheme(R.style.DialogWarning);
+        dialogFragment.show(fm, "Error");
     }
 }

@@ -47,14 +47,16 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("In progress: " + workout.getName());
 
-        TextView currentActivity = (TextView) findViewById(R.id.current_activity_name);
-        currentActivity.setText(set.getActivity());
-
         count = 1;
-
+        displayCurrentActivity();
         displaySetProgress(count);
         displayNumberOfReps();
         displayWeight();
+    }
+
+    public void displayCurrentActivity(){
+        TextView currentActivity = (TextView) findViewById(R.id.current_activity_name);
+        currentActivity.setText(set.getActivity());
     }
 
     public void displayWeight(){
@@ -105,10 +107,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
             displaySetProgress(count);
             displayNumberOfReps();
             displayWeight();
-
-            TextView currentActivity = (TextView) findViewById(R.id.current_activity_name);
-            currentActivity.setText(set.getActivity());
-
+            displayCurrentActivity();
         }
     }
 }

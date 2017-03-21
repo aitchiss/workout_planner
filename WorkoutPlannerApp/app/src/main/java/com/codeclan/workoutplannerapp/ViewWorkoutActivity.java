@@ -43,14 +43,11 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-//        String selectedWorkoutName = extras.getString("workout");
         int selectedWorkoutId = extras.getInt("workout");
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
 
         actionBar.setTitle("workout: " + workout.getName());
-
-//        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
         ArrayList<Set> listOfSets = workout.getAllSets();
         WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
@@ -59,7 +56,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     }
 
     public void onEditButtonClick(View button){
-//        String selectedWorkout = workout.getName();
         int selectedWorkout = workout.getId();
         Intent intent = new Intent(this, EditWorkoutActivity.class);
         intent.putExtra("workout", selectedWorkout);
@@ -68,7 +64,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
     public void onStartButtonClick(View button){
         Intent intent = new Intent(this, PlayWorkoutActivity.class);
-//        intent.putExtra("workout", workout.getName());
         intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
@@ -118,13 +113,13 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
     public void cancelDeleteButtonClick(View button){
         Intent intent = new Intent (this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workout.getName());
+        intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
 
     public void viewHistoryButtonClick(View button){
         Intent intent = new Intent (this, WorkoutHistoryActivity.class);
-        intent.putExtra("workout", workout.getName());
+        intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
 

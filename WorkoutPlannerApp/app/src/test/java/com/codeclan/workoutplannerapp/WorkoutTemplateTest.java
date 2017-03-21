@@ -53,33 +53,6 @@ public class WorkoutTemplateTest {
         assertEquals(2, allSets.size());
     }
 
-    @Test
-    public void getNumberOfSimilarSetsTest(){
-        workoutTemplate.addMultipleSets(Activity.LUNGES, 5, 30, 5);
-        assertEquals(5, workoutTemplate.getNumberOfSimilarSets("lunges"));
-    }
-
-    @Test
-    public void getConciseSetDetails(){
-        String expected = "1 x deadlift: 8reps x 70kg";
-        String returned = workoutTemplate.getSetDetailsConciseForm().get(0);
-        assertEquals(returned, expected);
-    }
-
-    @Test
-    public void getConciseSetDetailsWorksForMultiples(){
-        Set newSet = new Set(Activity.DEADLIFT, 8, 70);
-        workoutTemplate.addSet(newSet);
-        String expected = "2 x deadlift: 8reps x 70kg";
-        String returned = workoutTemplate.getSetDetailsConciseForm().get(0);
-        assertEquals(returned, expected);
-    }
-
-    @Test
-    public void getActivityFromConciseSetDetails(){
-        String setDetails = workoutTemplate.getSetDetailsConciseForm().get(0);
-        assertEquals("deadlift", workoutTemplate.getActivityFromConciseSetDetails(setDetails));
-    }
 
     @Test
     public void canDeleteASetByActivityName(){

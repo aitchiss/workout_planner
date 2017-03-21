@@ -22,14 +22,19 @@ public class Workout {
     private int id;
 
 
-    public Workout(String name, int id){
-        this.name = name;
-        this.sets = new ArrayList<Set>();
-        this.id = id;
+    public Workout(WorkoutTemplate workoutTemplate){
+        this.name = workoutTemplate.getName();
+        this.sets = workoutTemplate.getAllSets();
+        this.id = workoutTemplate.getId();
+
     }
 
     public int getId(){
         return this.id;
+    }
+
+    public void addSet(Set set){
+        this.sets.add(set);
     }
 
     public String getName() {

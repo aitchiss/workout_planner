@@ -17,7 +17,7 @@ public class AddSetActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
-    Workout workout;
+    WorkoutTemplate workout;
     Activity activity;
     AppHistory appHistory;
     SharedPreferences sharedPref;

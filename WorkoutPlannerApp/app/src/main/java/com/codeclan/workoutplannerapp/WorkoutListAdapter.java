@@ -17,9 +17,9 @@ import java.util.ArrayList;
  * Created by user on 16/03/2017.
  */
 
-public class WorkoutListAdapter extends ArrayAdapter<Workout> {
+public class WorkoutListAdapter extends ArrayAdapter<WorkoutTemplate> {
 
-    public WorkoutListAdapter(Context context, ArrayList<Workout> workouts){
+    public WorkoutListAdapter(Context context, ArrayList<WorkoutTemplate> workouts){
         super(context, 0, workouts);
     }
 
@@ -30,7 +30,7 @@ public class WorkoutListAdapter extends ArrayAdapter<Workout> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.workout_list_item, parent,false);
         }
 
-        Workout currentWorkout = getItem(position);
+        WorkoutTemplate currentWorkout = getItem(position);
 
         TextView workoutName = (TextView) listItemView.findViewById(R.id.workout_name);
         workoutName.setText(currentWorkout.getName());

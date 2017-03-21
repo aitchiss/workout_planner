@@ -29,6 +29,10 @@ public class WorkoutTemplate implements WorkoutType {
         return this.id;
     }
 
+    public Set getSet(int index){
+        return this.sets.get(index);
+    }
+
     public String getName() {
         return name;
     }

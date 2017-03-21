@@ -14,7 +14,7 @@ public class AddCustomSetActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
-    Workout workout;
+    WorkoutTemplate workout;
     AppHistory appHistory;
     SharedPreferences sharedPref;
 
@@ -35,7 +35,6 @@ public class AddCustomSetActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Adding to: " + workout.getName());
-
     }
 
     public void addCustomSetButtonClick(View button){

@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class WorkoutLog {
 
-    private ArrayList<Workout> workoutTemplates;
+    private ArrayList<WorkoutTemplate> workoutTemplates;
     private Workout currentWorkout;
     private Set currentSet;
     private ArrayList<Workout> completedWorkouts;
@@ -18,33 +18,33 @@ public class WorkoutLog {
 
     public WorkoutLog(){
 
-        this.workoutTemplates = new ArrayList<Workout>();
+        this.workoutTemplates = new ArrayList<WorkoutTemplate>();
         this.completedWorkouts = new ArrayList<Workout>();
     }
 
-    public void addWorkoutTemplate(Workout workout){
-        this.workoutTemplates.add(workout);
+    public void addWorkoutTemplate(WorkoutTemplate workoutTemplate){
+        this.workoutTemplates.add(workoutTemplate);
     }
 
-    public Workout getWorkoutTemplate(String workoutName){
-        for (Workout workout : workoutTemplates){
-            if (workout.getName().equals(workoutName)){
-                return workout;
+    public WorkoutTemplate getWorkoutTemplate(String workoutName){
+        for (WorkoutTemplate workoutTemplate : workoutTemplates){
+            if (workoutTemplate.getName().equals(workoutName)){
+                return workoutTemplate;
             }
         }
         return null;
     }
 
-    public Workout getWorkoutTemplate(int workoutId){
-        for (Workout workout : workoutTemplates){
-            if (workout.getId() == workoutId){
-                return workout;
+    public WorkoutTemplate getWorkoutTemplate(int workoutId){
+        for (WorkoutTemplate workoutTemplate : workoutTemplates){
+            if (workoutTemplate.getId() == workoutId){
+                return workoutTemplate;
             }
         }
         return null;
     }
 
-    public ArrayList<Workout> getAllWorkoutTemplates(){
+    public ArrayList<WorkoutTemplate> getAllWorkoutTemplates(){
         return this.workoutTemplates;
     }
 
@@ -53,28 +53,14 @@ public class WorkoutLog {
     }
 
     public void startWorkout(String workoutName){
-        Workout workout = getWorkoutTemplate(workoutName);
-        workout.templateUpdateLastUsedDate();
-        this.workoutTemplates.remove(workout);
-        this.workoutTemplates.add(0, workout);
+        WorkoutTemplate workoutTemplate = getWorkoutTemplate(workoutName);
+        workoutTemplate.templateUpdateLastUsedDate();
 
-        Workout newWorkout = new Workout(workout.getName());
+        this.workoutTemplates.remove(workoutTemplate);
+        this.workoutTemplates.add(0, workoutTemplate);
 
-        for (Set set : workout.getAllSets()){
-            if (set.getActivityType() == null){
-                String activityName = set.getActivity();
-                int reps = set.getReps();
-                int weight = set.getWeight();
-                Set newSet = new Set(activityName, reps, weight);
-                newWorkout.addSet(newSet);
-            } else{
-                Activity activity = set.getActivityType();
-                int reps = set.getReps();
-                int weight = set.getWeight();
-                Set newSet = new Set(activity, reps, weight);
-                newWorkout.addSet(newSet);
-            }
-        }
+        Workout newWorkout = new Workout(workoutTemplate);
+
         currentWorkout = newWorkout;
         currentSet = currentWorkout.getSet(0);
     }
@@ -92,6 +78,17 @@ public class WorkoutLog {
         ArrayList<Workout> matchingWorkouts = new ArrayList<Workout>();
         for (Workout workout : this.completedWorkouts){
             if (workout.getName().equals(workoutName)){
+                matchingWorkouts.add(workout);
+            }
+        }
+        Collections.reverse(matchingWorkouts);
+        return matchingWorkouts;
+    }
+
+    public ArrayList<Workout> getCompletedWorkoutsById(int workoutId){
+        ArrayList<Workout> matchingWorkouts = new ArrayList<Workout>();
+        for (Workout workout : this.completedWorkouts){
+            if (workout.getId() == workoutId){
                 matchingWorkouts.add(workout);
             }
         }
@@ -140,7 +137,7 @@ public class WorkoutLog {
     }
 
 
-    public void deleteWorkoutTemplate(Workout workout){
-        this.workoutTemplates.remove(workout);
+    public void deleteWorkoutTemplate(WorkoutTemplate workoutTemplate){
+        this.workoutTemplates.remove(workoutTemplate);
     }
 }

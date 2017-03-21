@@ -25,7 +25,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
-    Workout workout;
+    WorkoutTemplate workout;
     AppHistory appHistory;
     SharedPreferences sharedPref;
 
@@ -53,8 +53,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
         ListView listView = (ListView) findViewById(R.id.workout_contents);
         listView.setAdapter(workoutContentsAdapter);
-
-
     }
 
     public void onEditButtonClick(View button){

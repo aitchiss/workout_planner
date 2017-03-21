@@ -11,6 +11,6 @@ public interface WorkoutType {
     public int getId();
     public String getName();
     public ArrayList<Set> getAllSets();
-
-
+    public Set getSet(int index);
+    public void addSet(Set set);
 }

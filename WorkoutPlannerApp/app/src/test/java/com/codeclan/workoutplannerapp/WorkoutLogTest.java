@@ -16,6 +16,8 @@ public class WorkoutLogTest {
 
     WorkoutLog workoutLog;
 
+    WorkoutTemplate workoutTemplate;
+    WorkoutTemplate workoutTemplate2;
     Workout workout;
     Workout workout2;
 
@@ -23,34 +25,39 @@ public class WorkoutLogTest {
     public void before(){
         workoutLog = new WorkoutLog();
 
-        workout = new Workout("test workout");
-        workout.addMultipleSets(Activity.BENCHPRESS, 5, 35, 3);
-        workout.addMultipleSets(Activity.SQUAT, 6, 50, 3);
+        workoutTemplate = new WorkoutTemplate("test workout");
+        workoutTemplate.addMultipleSets(Activity.BENCHPRESS, 5, 35, 3);
+        workoutTemplate.addMultipleSets(Activity.SQUAT, 6, 50, 3);
 
-        workout2 = new Workout("second test workout");
-        workout.addMultipleSets(Activity.LUNGES, 10, 25, 4);
+//        workout = new Workout(workoutTemplate);
 
-        workoutLog.addWorkoutTemplate(workout);
-        workoutLog.addWorkoutTemplate(workout2);
+        workoutTemplate2 = new WorkoutTemplate("second test workout");
+        workoutTemplate2.addMultipleSets(Activity.LUNGES, 10, 25, 4);
+
+//        workout2 = new Workout(workoutTemplate2);
+
+
+        workoutLog.addWorkoutTemplate(workoutTemplate);
+        workoutLog.addWorkoutTemplate(workoutTemplate2);
     }
 
     @Test
-    public void canSaveWorkoutAsTemplate(){
-        Workout foundTemplate = workoutLog.getWorkoutTemplate("test workout");
-        assertEquals(workout, foundTemplate);
+    public void canSaveWorkoutTemplate(){
+        WorkoutTemplate foundTemplate = workoutLog.getWorkoutTemplate("test workout");
+        assertEquals(workoutTemplate, foundTemplate);
     }
 
     @Test
     public void testGetTemplateCanSearchMultipleWorkouts(){
-        Workout foundTemplate = workoutLog.getWorkoutTemplate("second test workout");
-        assertEquals(workout2, foundTemplate);
+        WorkoutTemplate foundTemplate = workoutLog.getWorkoutTemplate("second test workout");
+        assertEquals(workoutTemplate2, foundTemplate);
     }
 
     @Test
     public void canGetAllWorkoutTemplates(){
-        ArrayList<Workout> allWorkouts = workoutLog.getAllWorkoutTemplates();
-        assertEquals(workout, allWorkouts.get(0));
-        assertEquals(workout2, allWorkouts.get(1));
+        ArrayList<WorkoutTemplate> allWorkouts = workoutLog.getAllWorkoutTemplates();
+        assertEquals(workoutTemplate, allWorkouts.get(0));
+        assertEquals(workoutTemplate2, allWorkouts.get(1));
     }
 
     @Test
@@ -99,7 +106,7 @@ public class WorkoutLogTest {
 
     @Test
     public void anotherSetRemainingReturnsFalseIfFinalSet(){
-        Workout shortWorkout = new Workout("short workout");
+        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout");
         shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
         workoutLog.addWorkoutTemplate(shortWorkout);
         workoutLog.startWorkout("short workout");
@@ -110,7 +117,7 @@ public class WorkoutLogTest {
 
     @Test
     public void anotherSetRemainingReturnsTrueIfNotFinalSet(){
-        Workout shortWorkout = new Workout("short workout");
+        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout");
         shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
         workoutLog.addWorkoutTemplate(shortWorkout);
         workoutLog.startWorkout("short workout");
@@ -119,7 +126,7 @@ public class WorkoutLogTest {
 
     @Test
     public void finishCurrentSetEndsWorkoutIfLastSet(){
-        Workout shortWorkout = new Workout("short workout");
+        WorkoutTemplate shortWorkout = new WorkoutTemplate("short workout");
         shortWorkout.addMultipleSets(Activity.LUNGES, 2, 33, 2);
         workoutLog.addWorkoutTemplate(shortWorkout);
         workoutLog.startWorkout("short workout");
@@ -137,14 +144,14 @@ public class WorkoutLogTest {
 
     @Test
     public void canDeleteAWorkoutTemplate(){
-        workoutLog.deleteWorkoutTemplate(workout);
+        workoutLog.deleteWorkoutTemplate(workoutTemplate);
         assertEquals(1, workoutLog.getAllWorkoutTemplates().size());
     }
 
     @Test
     public void canGetWorkoutById(){
-        Workout foundWorkout = workoutLog.getWorkoutTemplate(workout.getId());
-        assertEquals(workout, foundWorkout);
+        WorkoutTemplate foundWorkout = workoutLog.getWorkoutTemplate(workoutTemplate.getId());
+        assertEquals(workoutTemplate, foundWorkout);
     }
 
 

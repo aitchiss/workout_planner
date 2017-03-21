@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
 
-        ArrayList<Workout> list = workoutLog.getAllWorkoutTemplates();
+        ArrayList<WorkoutTemplate> list = workoutLog.getAllWorkoutTemplates();
 
         appHistory.updateLog(sharedPref, workoutLog);
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onViewButtonClick(View view){
         TextView viewWorkout = (TextView) view;
-        Workout workoutSelected = (Workout) viewWorkout.getTag();
+        WorkoutTemplate workoutSelected = (WorkoutTemplate) viewWorkout.getTag();
         String workoutName = workoutSelected.getName();
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);

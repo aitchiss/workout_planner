@@ -38,9 +38,10 @@ public class EditWorkoutActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String selectedWorkoutName = extras.getString("workout");
+//        String selectedWorkoutName = extras.getString("workout");
+        int selectedWorkoutId = extras.getInt("workout");
 
-        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
+        workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add sets to: " + workout.getName());

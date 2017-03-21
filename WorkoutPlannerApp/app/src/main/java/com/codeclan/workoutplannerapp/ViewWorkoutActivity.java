@@ -59,7 +59,8 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     }
 
     public void onEditButtonClick(View button){
-        String selectedWorkout = workout.getName();
+//        String selectedWorkout = workout.getName();
+        int selectedWorkout = workout.getId();
         Intent intent = new Intent(this, EditWorkoutActivity.class);
         intent.putExtra("workout", selectedWorkout);
         startActivity(intent);

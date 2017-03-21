@@ -3,6 +3,7 @@ package com.codeclan.workoutplannerapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -33,8 +34,8 @@ public class WorkoutHistoryActivity extends AppCompatActivity {
 
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
-        TextView listingView = (TextView) findViewById(R.id.workout_name);
-        listingView.setText(workout.getName());
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("History for: " + workout.getName());
 
         ArrayList<Workout> listOfCompletedWorkouts = workoutLog.getCompletedWorkoutsByName(workout.getName());
 

@@ -3,6 +3,8 @@ package com.codeclan.workoutplannerapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,8 +42,8 @@ public class EditWorkoutActivity extends AppCompatActivity {
 
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
-        TextView title = (TextView) findViewById(R.id.workout_to_edit);
-        title.setText("add to workout: " + workout.getName());
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Add sets to: " + workout.getName());
 
         ArrayList<Activity> allActivities = Activity.getAllActivities();
 

@@ -3,6 +3,7 @@ package com.codeclan.workoutplannerapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,9 +44,8 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         workout = workoutLog.getCurrentWorkout();
         set = workoutLog.getCurrentSet();
 
-
-        TextView title = (TextView) findViewById(R.id.current_workout_name);
-        title.setText("in progress: " + workout.getName());
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("In progress: " + workout.getName());
 
         TextView currentActivity = (TextView) findViewById(R.id.current_activity_name);
         currentActivity.setText(set.getActivity());

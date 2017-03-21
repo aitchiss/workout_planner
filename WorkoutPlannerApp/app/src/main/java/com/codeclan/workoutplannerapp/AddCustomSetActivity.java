@@ -3,6 +3,7 @@ package com.codeclan.workoutplannerapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,8 +33,8 @@ public class AddCustomSetActivity extends AppCompatActivity {
         String selectedWorkoutName = extras.getString("workout");
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
-        TextView pageTitle = (TextView) findViewById(R.id.add_set_title);
-        pageTitle.setText("add to workout: " + workout.getName());
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Adding to: " + workout.getName());
 
     }
 

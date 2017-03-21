@@ -45,10 +45,9 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         String selectedWorkoutName = extras.getString("workout");
 
-        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
+        actionBar.setTitle("workout: " + selectedWorkoutName);
 
-        TextView listingView = (TextView) findViewById(R.id.workout_name);
-        listingView.setText(workout.getName());
+        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
         ArrayList<Set> listOfSets = workout.getAllSets();
         WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);

@@ -3,6 +3,7 @@ package com.codeclan.workoutplannerapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,9 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Create new workout");
     }
 
 

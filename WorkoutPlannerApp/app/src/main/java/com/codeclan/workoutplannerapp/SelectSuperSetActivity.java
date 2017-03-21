@@ -70,4 +70,14 @@ public class SelectSuperSetActivity extends AppCompatActivity {
         intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
+
+    public void addCustomSuperSetClick(View button){
+        Intent intent = new Intent(this, AddCustomSuperSetActivity.class);
+        intent.putExtra("main activity", mainActivity);
+        intent.putExtra("main sets", mainSets);
+        intent.putExtra("main reps", mainReps);
+        intent.putExtra("main weight", mainWeight);
+        intent.putExtra("workout", workout.getId());
+        startActivity(intent);
+    }
 }

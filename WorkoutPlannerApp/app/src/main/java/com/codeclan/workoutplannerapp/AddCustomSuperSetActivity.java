@@ -9,16 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
-public class AddSuperSetActivity extends AppCompatActivity {
+public class AddCustomSuperSetActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
     public static final String WORKOUTLOG = "WorkoutLog";
     WorkoutTemplate workout;
     AppHistory appHistory;
     SharedPreferences sharedPref;
-    Activity superSetActivity;
     String mainActivity;
     int mainSets;
     int mainReps;
@@ -27,15 +25,15 @@ public class AddSuperSetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_super_set);
+        setContentView(R.layout.activity_add_custom_super_set);
 
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+
         int selectedWorkoutId = extras.getInt("workout");
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
@@ -44,18 +42,11 @@ public class AddSuperSetActivity extends AppCompatActivity {
         mainReps = extras.getInt("main reps");
         mainWeight = extras.getInt("main weight");
 
-        String selectedActivityName = extras.getString("activity");
-        superSetActivity = Activity.valueOf(selectedActivityName);
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add as superset with " + mainActivity);
-
-        TextView activityName = (TextView) findViewById(R.id.add_set_activity_name);
-        activityName.setText(selectedActivityName.toLowerCase());
     }
 
-
-    public void confirmAddSetButtonClick(View button){
+    public void addCustomSetButtonClick(View button){
 
         EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
         Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
@@ -65,6 +56,13 @@ public class AddSuperSetActivity extends AppCompatActivity {
         } else {
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
             Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+
+            EditText activity = (EditText) findViewById(R.id.enter_custom_activity);
+            String superSetActivity = activity.getText().toString();
+
+            if (superSetActivity.equals("")){
+                superSetActivity = "unnamed activity";
+            }
 
             Set set1 = new Set(mainActivity, mainReps, mainWeight);
             Set set2 = new Set(superSetActivity, numberOfReps, numberOfWeight);

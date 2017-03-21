@@ -25,7 +25,8 @@
         <activity android:name=".WorkoutHistoryActivity" />
         <activity android:name=".AddCustomSetActivity" />
         <activity android:name=".AddSuperSetActivity" />
-        <activity android:name=".SelectSuperSetActivity"></activity>
+        <activity android:name=".SelectSuperSetActivity" />
+        <activity android:name=".AddCustomSuperSetActivity"></activity>
     </application>
 
 </manifest>

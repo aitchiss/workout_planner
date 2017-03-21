@@ -10,6 +10,7 @@
     android:weightSum="1">
 
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,17 +69,16 @@
         android:textColor="@color/colorAccent"
         android:text="delete workout"/>
 
+
     <Button
         android:id="@+id/view_history_button"
         android:onClick="viewHistoryButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         style="?android:attr/borderlessButtonStyle"
+        android:layout_gravity="center"
         android:textColor="@color/colorAccent"
         android:text="view workout history"/>
-
-
 
     </LinearLayout>
 

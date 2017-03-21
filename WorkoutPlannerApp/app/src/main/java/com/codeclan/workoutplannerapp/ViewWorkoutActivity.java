@@ -46,7 +46,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         int selectedWorkoutId = extras.getInt("workout");
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
-
         actionBar.setTitle("workout: " + workout.getName());
 
         ArrayList<Set> listOfSets = workout.getAllSets();

@@ -36,7 +36,6 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-//        String selectedWorkoutName = extras.getString("workout");
         int selectedWorkoutId = extras.getInt("workout");
 
         workoutLog.startWorkout(selectedWorkoutId);

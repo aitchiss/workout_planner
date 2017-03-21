@@ -42,10 +42,11 @@ public class MainActivity extends AppCompatActivity {
     public void onViewButtonClick(View view){
         TextView viewWorkout = (TextView) view;
         WorkoutTemplate workoutSelected = (WorkoutTemplate) viewWorkout.getTag();
-        String workoutName = workoutSelected.getName();
+//        String workoutName = workoutSelected.getName();
+        int workoutId = workoutSelected.getId();
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workoutName);
+        intent.putExtra("workout", workoutId);
 
         startActivity(intent);
     }

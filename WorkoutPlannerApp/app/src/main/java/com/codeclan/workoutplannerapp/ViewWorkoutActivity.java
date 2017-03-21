@@ -43,11 +43,14 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String selectedWorkoutName = extras.getString("workout");
+//        String selectedWorkoutName = extras.getString("workout");
+        int selectedWorkoutId = extras.getInt("workout");
+        workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
-        actionBar.setTitle("workout: " + selectedWorkoutName);
 
-        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
+        actionBar.setTitle("workout: " + workout.getName());
+
+//        workout = workoutLog.getWorkoutTemplate(selectedWorkoutName);
 
         ArrayList<Set> listOfSets = workout.getAllSets();
         WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
@@ -95,7 +98,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     }
 
     public void deleteWorkoutButtonClick(View button){
-
         FragmentManager fm = getFragmentManager();
         DeleteWarning dialogFragment = new DeleteWarning ();
         setTheme(R.style.DialogWarning);

@@ -37,7 +37,7 @@ public class WorkoutHistoryActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("History for: " + workout.getName());
 
-        ArrayList<Workout> listOfCompletedWorkouts = workoutLog.getCompletedWorkoutsByName(workout.getName());
+        ArrayList<Workout> listOfCompletedWorkouts = workoutLog.getCompletedWorkoutsById(workout.getId());
 
         WorkoutHistoryAdapter workoutHistoryAdapter = new WorkoutHistoryAdapter(this, listOfCompletedWorkouts);
         ListView historyListView = (ListView) findViewById(R.id.workout_history_list);

@@ -74,16 +74,6 @@ public class WorkoutLog {
         return completedWorkouts;
     }
 
-    public ArrayList<Workout> getCompletedWorkoutsByName(String workoutName){
-        ArrayList<Workout> matchingWorkouts = new ArrayList<Workout>();
-        for (Workout workout : this.completedWorkouts){
-            if (workout.getName().equals(workoutName)){
-                matchingWorkouts.add(workout);
-            }
-        }
-        Collections.reverse(matchingWorkouts);
-        return matchingWorkouts;
-    }
 
     public ArrayList<Workout> getCompletedWorkoutsById(int workoutId){
         ArrayList<Workout> matchingWorkouts = new ArrayList<Workout>();

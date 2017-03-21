@@ -53,9 +53,11 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         count = 1;
 
         displaySetProgress(count);
-
         displayNumberOfReps();
+        displayWeight();
+    }
 
+    public void displayWeight(){
         EditText weight = (EditText) findViewById(R.id.current_weight);
         weight.setText(set.getWeight().toString());
     }
@@ -101,11 +103,8 @@ public class PlayWorkoutActivity extends AppCompatActivity {
             set = workoutLog.getCurrentSet();
 
             displaySetProgress(count);
-
             displayNumberOfReps();
-
-            EditText weight = (EditText) findViewById(R.id.current_weight);
-            weight.setText(set.getWeight().toString());
+            displayWeight();
 
             TextView currentActivity = (TextView) findViewById(R.id.current_activity_name);
             currentActivity.setText(set.getActivity());

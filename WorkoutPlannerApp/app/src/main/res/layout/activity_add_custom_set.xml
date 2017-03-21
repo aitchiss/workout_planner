@@ -102,5 +102,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/add_with_superset_button"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:onClick="onAddSuperSetButtonClick"
+        android:text="add with superset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

@@ -57,7 +57,7 @@ public class AddCustomSetActivity extends AppCompatActivity {
             String activityName = activity.getText().toString();
 
             if (activityName.equals("")){
-                activityName = "unnamed activity";
+                activityName = " activity";
             }
 
             workout.addMultipleSets(activityName, numberOfReps, numberOfWeight, numberOfSets);
@@ -75,5 +75,37 @@ public class AddCustomSetActivity extends AppCompatActivity {
         InputErrorWarning dialogFragment = new InputErrorWarning ();
         setTheme(R.style.DialogWarning);
         dialogFragment.show(fm, "Error");
+    }
+
+    public void onAddSuperSetButtonClick(View button){
+
+        EditText numberOfSetsInput = (EditText) findViewById(R.id.choose_set_number);
+        Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
+
+        EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
+        Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
+
+        if (numberOfSets.equals(0) || numberOfReps.equals(0)){
+            errorDialog();
+        } else {
+            EditText activityNameInput = (EditText) findViewById(R.id.enter_custom_activity);
+            String activity = activityNameInput.getText().toString();
+
+            if (activity.equals("")){
+                activity = "unnamed activity";
+            }
+
+            EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
+            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+
+            Intent intent = new Intent(this, SelectSuperSetActivity.class);
+            intent.putExtra("workout", workout.getId());
+            intent.putExtra("main activity", activity);
+            intent.putExtra("main sets", numberOfSets);
+            intent.putExtra("main reps", numberOfReps);
+            intent.putExtra("main weight", numberOfWeight);
+
+            startActivity(intent);
+        }
     }
 }

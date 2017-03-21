@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,7 +28,8 @@ public class AddSuperSetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_super_set);
+        setContentView(R.layout.activity_add_set);
+        hideIrrelevantViews();
 
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
 
@@ -52,6 +54,17 @@ public class AddSuperSetActivity extends AppCompatActivity {
 
         TextView activityName = (TextView) findViewById(R.id.add_set_activity_name);
         activityName.setText(selectedActivityName.toLowerCase());
+    }
+
+    public void hideIrrelevantViews(){
+        TextView setSelectionText = (TextView) findViewById(R.id.choose_set_help_text);
+        setSelectionText.setVisibility(View.INVISIBLE);
+
+        EditText inputSets = (EditText) findViewById(R.id.choose_set_number);
+        inputSets.setVisibility(View.INVISIBLE);
+
+        Button addSuperSetButton = (Button) findViewById(R.id.add_with_superset_button);
+        addSuperSetButton.setVisibility(View.INVISIBLE);
     }
 
 

@@ -29,14 +29,7 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_custom_set);
 
-        EditText setNumberInput = (EditText) findViewById(R.id.choose_set_number);
-        setNumberInput.setVisibility(View.INVISIBLE);
-
-        TextView setInputText = (TextView) findViewById(R.id.choose_set_help_text);
-        setInputText.setVisibility(View.INVISIBLE);
-
-        Button superSetButton = (Button) findViewById(R.id.add_with_superset_button);
-        superSetButton.setVisibility(View.INVISIBLE);
+        hideIrrelevantViews();
 
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
         appHistory = new AppHistory();
@@ -55,6 +48,17 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add as superset with " + mainActivity);
+    }
+
+    public void hideIrrelevantViews(){
+        EditText setNumberInput = (EditText) findViewById(R.id.choose_set_number);
+        setNumberInput.setVisibility(View.INVISIBLE);
+
+        TextView setInputText = (TextView) findViewById(R.id.choose_set_help_text);
+        setInputText.setVisibility(View.INVISIBLE);
+
+        Button superSetButton = (Button) findViewById(R.id.add_with_superset_button);
+        superSetButton.setVisibility(View.INVISIBLE);
     }
 
     public void addCustomSetButtonClick(View button){

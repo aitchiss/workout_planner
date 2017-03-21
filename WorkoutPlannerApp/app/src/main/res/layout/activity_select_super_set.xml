@@ -8,7 +8,12 @@
     tools:context="com.codeclan.workoutplannerapp.SelectSuperSetActivity">
 
     <TextView
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
         android:text="select superset activity"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -21,6 +21,7 @@
     <TextView
         android:padding="10dp"
         android:textSize="15dp"
+        android:id="@+id/choose_set_help_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -95,6 +96,11 @@
     <Button
         android:id="@+id/add_with_superset_button"
         android:onClick="onAddSuperSetButtonClick"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:padding="10dp"
         android:text="add with superset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

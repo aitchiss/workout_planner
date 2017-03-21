@@ -83,7 +83,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         ImageView plusButton = (ImageView) button;
         Set setToCopy = (Set) plusButton.getTag();
         int indexOfSetToCopy = workout.getAllSets().indexOf(setToCopy);
-        Set setToAdd = new Set(setToCopy.getActivityType(), setToCopy.getReps(), setToCopy.getWeight());
+        Set setToAdd = new Set(setToCopy.getActivity(), setToCopy.getReps(), setToCopy.getWeight());
         workout.addSetAtIndex(setToAdd, indexOfSetToCopy);
 
         appHistory.updateLog(sharedPref, workoutLog);

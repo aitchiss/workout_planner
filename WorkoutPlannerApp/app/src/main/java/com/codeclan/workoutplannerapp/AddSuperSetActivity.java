@@ -71,7 +71,7 @@ public class AddSuperSetActivity extends AppCompatActivity {
     public void confirmAddSetButtonClick(View button){
 
         EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
-        
+
         if (isEmpty(numberOfRepsInput)){
             errorDialog();
         } else {

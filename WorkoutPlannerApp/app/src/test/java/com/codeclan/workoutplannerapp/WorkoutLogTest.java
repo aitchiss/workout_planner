@@ -148,5 +148,18 @@ public class WorkoutLogTest {
         assertEquals(workoutTemplate, foundWorkout);
     }
 
+    @Test
+    public void testCanGetCurrentProgress(){
+        workoutLog.startWorkout(workoutTemplate.getId());
+        assertEquals("1 of 3", workoutLog.getCurrentSetProgress("benchpress"));
+    }
+
+    @Test
+    public void canGetProgressMidWayThroughWorkout(){
+        workoutLog.startWorkout(workoutTemplate.getId());
+        workoutLog.finishCurrentSet(2, 15);
+        assertEquals("2 of 3", workoutLog.getCurrentSetProgress("benchpress"));
+    }
+
 
 }

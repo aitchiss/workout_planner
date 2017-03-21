@@ -21,7 +21,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
     public static final String WORKOUTLOG = "WorkoutLog";
     Workout workout;
     Set set;
-    Integer count;
+//    Integer count;
     AppHistory appHistory;
     SharedPreferences sharedPref;
 
@@ -45,9 +45,8 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("In progress: " + workout.getName());
 
-        count = 1;
         displayCurrentActivity();
-        displaySetProgress(count);
+        displaySetProgress();
         displayNumberOfReps();
         displayWeight();
     }
@@ -67,10 +66,10 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         numberOfReps.setText(set.getReps().toString());
     }
 
-    public void displaySetProgress(Integer count){
+
+    public void displaySetProgress(){
         TextView currentSetNumber = (TextView) findViewById(R.id.current_set_number);
-        Integer numberOfSimilarSets = workout.getNumberOfSimilarSets(set.getActivity());
-        currentSetNumber.setText(count.toString() + " of " + numberOfSimilarSets.toString());
+        currentSetNumber.setText(workoutLog.getCurrentSetProgress(set.getActivity()));
     }
 
     public void finishSetButtonClicked(View button){
@@ -94,14 +93,8 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
         } else {
 
-            if (set.getActivity().equals(workoutLog.getCurrentSet().getActivity())){
-                count++;
-            } else {
-                count = 1;
-            }
-
             set = workoutLog.getCurrentSet();
-            displaySetProgress(count);
+            displaySetProgress();
             displayNumberOfReps();
             displayWeight();
             displayCurrentActivity();

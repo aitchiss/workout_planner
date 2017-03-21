@@ -56,7 +56,7 @@ public class AddCustomSetActivity extends AppCompatActivity {
             String activityName = activity.getText().toString();
 
             if (activityName.equals("")){
-                activityName = " activity";
+                activityName = "unnamed activity";
             }
 
             workout.addMultipleSets(activityName, numberOfReps, numberOfWeight, numberOfSets);

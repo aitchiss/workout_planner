@@ -130,4 +130,17 @@ public class WorkoutLog {
     public void deleteWorkoutTemplate(WorkoutTemplate workoutTemplate){
         this.workoutTemplates.remove(workoutTemplate);
     }
+
+    public String getCurrentSetProgress(String activityName){
+        int similarSets = this.currentWorkout.getNumberOfSimilarSets(activityName);
+        ArrayList<Set> positions = new ArrayList<Set>();
+        for (Set set: this.currentWorkout.getAllSets()){
+            if (set.getActivity().equals(activityName)){
+                positions.add(set);
+            }
+        }
+        int currentProgress = positions.indexOf(this.currentSet) + 1;
+        String progress = currentProgress + " of " + similarSets;
+        return progress;
+    }
 }

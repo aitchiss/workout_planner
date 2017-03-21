@@ -27,16 +27,14 @@ public class Workout {
         this.name = workoutTemplate.getName();
         this.sets = new ArrayList<Set>();
         for (Set set : workoutTemplate.getAllSets()){
+            Integer reps = set.getReps();
+            Integer weight = set.getWeight();
             if (set.getActivityType() == null){
                 String activity = set.getActivity();
-                Integer reps = set.getReps();
-                Integer weight = set.getWeight();
                 Set setToAdd = new Set(activity, reps, weight);
                 this.sets.add(setToAdd);
             } else{
                 Activity activity = set.getActivityType();
-                Integer reps = set.getReps();
-                Integer weight = set.getWeight();
                 Set setToAdd = new Set(activity, reps, weight);
                 this.sets.add(setToAdd);
             }
@@ -81,6 +79,7 @@ public class Workout {
         }
         return counter;
     }
+
 
     public ArrayList<String> getSetDetailsConciseForm(){
         ArrayList<String> setDetails = new ArrayList<String>();

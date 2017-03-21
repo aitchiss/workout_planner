@@ -8,7 +8,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class AddCustomSuperSetActivity extends AppCompatActivity {
 
@@ -25,7 +27,16 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_custom_super_set);
+        setContentView(R.layout.activity_add_custom_set);
+
+        EditText setNumberInput = (EditText) findViewById(R.id.choose_set_number);
+        setNumberInput.setVisibility(View.INVISIBLE);
+
+        TextView setInputText = (TextView) findViewById(R.id.choose_set_help_text);
+        setInputText.setVisibility(View.INVISIBLE);
+
+        Button superSetButton = (Button) findViewById(R.id.add_with_superset_button);
+        superSetButton.setVisibility(View.INVISIBLE);
 
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
         appHistory = new AppHistory();

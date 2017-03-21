@@ -41,6 +41,11 @@ public class CreateWorkoutActivity extends AppCompatActivity {
 
         EditText workoutNameInput = (EditText) findViewById(R.id.workout_name_input);
         String workoutName = workoutNameInput.getText().toString();
+
+        if (workoutName.equals("")){
+            workoutName = "my workout";
+        }
+
         WorkoutTemplate workout = new WorkoutTemplate(workoutName);
         int workoutId = workout.getId();
         workoutLog.addWorkoutTemplate(workout);

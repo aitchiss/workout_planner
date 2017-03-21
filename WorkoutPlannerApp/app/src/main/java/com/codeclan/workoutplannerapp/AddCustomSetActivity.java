@@ -49,11 +49,16 @@ public class AddCustomSetActivity extends AppCompatActivity {
         if (numberOfReps.equals(0) || numberOfSets.equals(0)){
             errorDialog();
         } else{
+
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
             Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
 
             EditText activity = (EditText) findViewById(R.id.enter_custom_activity);
             String activityName = activity.getText().toString();
+
+            if (activityName.equals("")){
+                activityName = "unnamed activity";
+            }
 
             workout.addMultipleSets(activityName, numberOfReps, numberOfWeight, numberOfSets);
 

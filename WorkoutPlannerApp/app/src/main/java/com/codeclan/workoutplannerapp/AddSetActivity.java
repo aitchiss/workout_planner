@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,14 +52,15 @@ public class AddSetActivity extends AppCompatActivity {
     public void confirmAddSetButtonClick(View button){
 
         EditText numberOfSetsInput = (EditText) findViewById(R.id.choose_set_number);
-        Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
-
         EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
-        Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
-        if (numberOfSets.equals(0) || numberOfReps.equals(0)){
+
+        if (isEmpty(numberOfSetsInput) || isEmpty(numberOfRepsInput)){
             errorDialog();
         } else {
+            Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
+            Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
+
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
             Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
 
@@ -82,14 +84,14 @@ public class AddSetActivity extends AppCompatActivity {
 
     public void onAddSuperSetButtonClick(View button){
         EditText numberOfSetsInput = (EditText) findViewById(R.id.choose_set_number);
-        Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
-
         EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
-        Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
-        if (numberOfSets.equals(0) || numberOfReps.equals(0)){
+        if (isEmpty(numberOfSetsInput) || isEmpty(numberOfRepsInput)){
             errorDialog();
         } else {
+            Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
+            Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
+
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
             Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
 
@@ -103,4 +105,9 @@ public class AddSetActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    private boolean isEmpty(EditText editText) {
+        return editText.getText().toString().trim().length() == 0;
+    }
+
 }

@@ -64,11 +64,12 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
     public void addCustomSetButtonClick(View button){
 
         EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
-        Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
-        if (numberOfReps.equals(0)){
+        if (isEmpty(numberOfRepsInput)){
             errorDialog();
         } else {
+            Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
+
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
             Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
 
@@ -96,5 +97,9 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
         InputErrorWarning dialogFragment = new InputErrorWarning ();
         setTheme(R.style.DialogWarning);
         dialogFragment.show(fm, "Error");
+    }
+
+    private boolean isEmpty(EditText editText) {
+        return editText.getText().toString().trim().length() == 0;
     }
 }

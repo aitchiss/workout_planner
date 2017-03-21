@@ -108,6 +108,8 @@
         android:background="@color/colorAccent"
         android:textColor="@color/colorPrimary"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
         android:onClick="onAddSuperSetButtonClick"
         android:text="add with superset"
         android:layout_width="wrap_content"

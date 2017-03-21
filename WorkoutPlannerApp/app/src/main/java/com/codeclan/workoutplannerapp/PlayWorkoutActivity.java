@@ -36,9 +36,10 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String selectedWorkoutName = extras.getString("workout");
+//        String selectedWorkoutName = extras.getString("workout");
+        int selectedWorkoutId = extras.getInt("workout");
 
-        workoutLog.startWorkout(selectedWorkoutName);
+        workoutLog.startWorkout(selectedWorkoutId);
         workout = workoutLog.getCurrentWorkout();
         set = workoutLog.getCurrentSet();
 
@@ -89,7 +90,7 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, ViewWorkoutActivity.class);
-            intent.putExtra("workout", workout.getName());
+            intent.putExtra("workout", workout.getId());
             startActivity(intent);
 
         } else {

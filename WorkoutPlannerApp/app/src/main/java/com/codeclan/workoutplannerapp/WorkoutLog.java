@@ -52,8 +52,8 @@ public class WorkoutLog {
         return currentWorkout;
     }
 
-    public void startWorkout(String workoutName){
-        WorkoutTemplate workoutTemplate = getWorkoutTemplate(workoutName);
+    public void startWorkout(int workoutId){
+        WorkoutTemplate workoutTemplate = getWorkoutTemplate(workoutId);
         workoutTemplate.templateUpdateLastUsedDate();
 
         this.workoutTemplates.remove(workoutTemplate);

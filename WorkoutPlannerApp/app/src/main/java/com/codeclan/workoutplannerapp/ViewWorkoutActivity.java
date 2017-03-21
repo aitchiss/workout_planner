@@ -68,7 +68,8 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
     public void onStartButtonClick(View button){
         Intent intent = new Intent(this, PlayWorkoutActivity.class);
-        intent.putExtra("workout", workout.getName());
+//        intent.putExtra("workout", workout.getName());
+        intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
 

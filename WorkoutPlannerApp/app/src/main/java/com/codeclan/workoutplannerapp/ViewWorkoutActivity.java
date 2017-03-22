@@ -83,10 +83,26 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         }
     }
 
-    public void onEditNameClick(MenuItem item){
-        Intent intent = new Intent(this, EditNameActivity.class);
-        intent.putExtra("workout", workout.getId());
-        startActivity(intent);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.edit_name_button:
+                Intent intent = new Intent(this, EditNameActivity.class);
+                intent.putExtra("workout", workout.getId());
+                startActivity(intent);
+                break;
+            case R.id.delete_icon:
+                deleteWorkoutButtonClick();
+                break;
+        }
+        return true;
+    }
+
+    public void deleteWorkoutButtonClick(){
+        FragmentManager fm = getFragmentManager();
+        DeleteWarning dialogFragment = new DeleteWarning ();
+        setTheme(R.style.DialogWarning);
+        dialogFragment.show(fm, "Confirm delete");
     }
 
 
@@ -128,12 +144,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         fillListView();
     }
 
-    public void deleteWorkoutButtonClick(View button){
-        FragmentManager fm = getFragmentManager();
-        DeleteWarning dialogFragment = new DeleteWarning ();
-        setTheme(R.style.DialogWarning);
-        dialogFragment.show(fm, "Confirm delete");
-    }
+
 
     public void confirmDeleteButtonClick(View button){
         workoutLog.deleteWorkoutTemplate(workout);

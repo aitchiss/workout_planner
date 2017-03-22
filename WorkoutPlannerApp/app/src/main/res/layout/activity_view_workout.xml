@@ -68,19 +68,9 @@
         android:onClick="onStartButtonClick"
         android:textColor="@color/colorPrimary"/>
 
-    <Button
-        android:id="@+id/delete_workout_button"
-        android:onClick="deleteWorkoutButtonClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        style="?android:attr/borderlessButtonStyle"
-        android:textColor="@color/colorAccent"
-        android:text="delete workout"/>
-
 
     <Button
+        android:layout_marginTop="10dp"
         android:id="@+id/view_history_button"
         android:onClick="viewHistoryButtonClick"
         android:layout_width="wrap_content"

@@ -66,4 +66,6 @@ public class AppHistory {
         editor.putString("IDHistory", gson.toJson(String.valueOf(latestID)));
         editor.apply();
     }
+
+
 }

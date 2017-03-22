@@ -52,12 +52,7 @@ public class CreateWorkoutActivity extends AppCompatActivity {
 
     public void onSaveButtonClick(View view){
 
-        EditText workoutNameInput = (EditText) findViewById(R.id.workout_name_input);
-        String workoutName = workoutNameInput.getText().toString();
-
-        if (workoutName.equals("")){
-            workoutName = "my workout";
-        }
+        String workoutName = getWorkoutName();
 
         int id = nextId.incrementAndGet();
         appHistory.updateIdLog(sharedPrefID, id);
@@ -72,5 +67,16 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewWorkoutActivity.class);
         intent.putExtra("workout", workoutId);
         startActivity(intent);
+    }
+
+    public String getWorkoutName(){
+        EditText workoutNameInput = (EditText) findViewById(R.id.workout_name_input);
+        String workoutName = workoutNameInput.getText().toString();
+
+        if (workoutName.equals("")){
+            return"my workout";
+        } else {
+            return workoutName;
+        }
     }
 }

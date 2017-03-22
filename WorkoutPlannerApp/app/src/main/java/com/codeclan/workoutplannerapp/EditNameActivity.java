@@ -47,17 +47,21 @@ public class EditNameActivity extends AppCompatActivity {
     }
 
     public void onSaveButtonClick(View button){
-        EditText workoutNameInput = (EditText) findViewById(R.id.workout_name_input);
-        String workoutName = workoutNameInput.getText().toString();
-
-        if (!workoutName.equals((""))){
-            workout.setName(workoutName);
-        }
+        setWorkoutName();
 
         appHistory.updateLog(sharedPref, workoutLog);
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);
         intent.putExtra("workout", workout.getId());
         startActivity(intent);
+    }
+
+    public void setWorkoutName(){
+        EditText workoutNameInput = (EditText) findViewById(R.id.workout_name_input);
+        String workoutName = workoutNameInput.getText().toString();
+
+        if (!workoutName.equals((""))){
+            workout.setName(workoutName);
+        }
     }
 }

@@ -32,7 +32,6 @@ public class EditWorkoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_workout);
 
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
 
@@ -42,26 +41,37 @@ public class EditWorkoutActivity extends AppCompatActivity {
 
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
+        setupActionBar();
+        populateActivitiesList();
+    }
+
+    public void setupActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add sets to: " + workout.getName());
+    }
 
+    public void populateActivitiesList(){
         ArrayList<Activity> allActivities = Activity.getAllActivities();
 
-        ListAvailableActivitiesAdapter listAvailableActivitiesAdapter = new ListAvailableActivitiesAdapter(this, allActivities);
+        ListAvailableActivitiesAdapter listAvailableActivitiesAdapter =
+                new ListAvailableActivitiesAdapter(this, allActivities);
         ListView activitiesList = (ListView) findViewById(R.id.available_activities_list);
         activitiesList.setAdapter(listAvailableActivitiesAdapter);
     }
 
     public void onAddSetButtonClick(View view){
-
-        TextView addSetText = (TextView) view;
-        Activity selectedActivity = (Activity) addSetText.getTag();
-        String activityName = selectedActivity.toString();
+        String activityName = getActivityName(view);
 
         Intent intent = new Intent(this, AddSetActivity.class);
         intent.putExtra("activity", activityName);
         intent.putExtra("workout", workout.getId());
         startActivity(intent);
+    }
+
+    public String getActivityName(View view){
+        TextView addSetText = (TextView) view;
+        Activity selectedActivity = (Activity) addSetText.getTag();
+        return selectedActivity.toString();
     }
 
     public void addCustomSetClick(View button){

@@ -48,7 +48,6 @@ public class EditNameActivity extends AppCompatActivity {
 
     public void onSaveButtonClick(View button){
         setWorkoutName();
-
         appHistory.updateLog(sharedPref, workoutLog);
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);

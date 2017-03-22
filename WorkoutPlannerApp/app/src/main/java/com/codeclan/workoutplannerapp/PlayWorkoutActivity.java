@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -102,7 +103,10 @@ public class PlayWorkoutActivity extends AppCompatActivity {
 
     public void finishSetButtonClicked(View button){
         finishSetAndUpdateLog();
+        checkIfSetRemainingAndAdvance();
+    }
 
+    public void checkIfSetRemainingAndAdvance(){
         if (workoutLog.getCurrentSet() == null){
             Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG).show();
 
@@ -113,6 +117,12 @@ public class PlayWorkoutActivity extends AppCompatActivity {
             set = workoutLog.getCurrentSet();
             setupDisplay();
         }
+    }
+
+    public void onSkipButtonClick(View button){
+        workoutLog.finishCurrentSet(0, 0);
+        appHistory.updateLog(sharedPref, workoutLog);
+        checkIfSetRemainingAndAdvance();
     }
 
 

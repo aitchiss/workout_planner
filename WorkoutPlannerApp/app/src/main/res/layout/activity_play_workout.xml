@@ -75,4 +75,16 @@
         android:background="@color/colorAccent"
         android:textColor="@color/colorPrimary"/>
 
+    <Button
+        android:id="@+id/skip_set_button"
+        android:onClick="onSkipButtonClick"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_height="wrap_content"
+        android:text="skip"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        android:background="@color/colorBackground"/>
+
 </LinearLayout>

@@ -84,8 +84,10 @@ public class Workout {
     public ArrayList<String> getSetDetailsConciseForm(){
         ArrayList<String> setDetails = new ArrayList<String>();
         for (Set set: getAllSets()){
-            String stringToAdd = set.getActivity() + ": " + set.getReps() + "reps x " + set.getWeight() + "kg";
-            setDetails.add(stringToAdd);
+            if (!set.getReps().equals(0)){
+                String stringToAdd = set.getActivity() + ": " + set.getReps() + "reps x " + set.getWeight() + "kg";
+                setDetails.add(stringToAdd);
+            }
         }
         ArrayList<String> conciseList = new ArrayList<String>();
 

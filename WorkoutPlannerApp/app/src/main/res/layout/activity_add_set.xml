@@ -30,6 +30,7 @@
     <EditText
         android:padding="10dp"
         android:textSize="15dp"
+        android:textColor="@color/colorPrimaryFont"
         android:width="50dp"
         android:textAlignment="center"
         android:id="@+id/choose_set_number"
@@ -50,6 +51,7 @@
     <EditText
         android:padding="10dp"
         android:textSize="15dp"
+        android:textColor="@color/colorPrimaryFont"
         android:textAlignment="center"
         android:width="50dp"
         android:backgroundTint="@color/colorAccent"
@@ -70,6 +72,7 @@
     <EditText
         android:padding="10dp"
         android:width="50dp"
+        android:textColor="@color/colorPrimaryFont"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:backgroundTint="@color/colorAccent"

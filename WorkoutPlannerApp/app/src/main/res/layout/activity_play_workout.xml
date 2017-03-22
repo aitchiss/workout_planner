@@ -28,11 +28,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="20dp"
+        android:textColor="@color/colorSecondaryFont"
         android:text="reps"/>
 
     <EditText
         android:id="@+id/current_reps"
         android:backgroundTint="@color/colorAccent"
+        android:textColor="@color/colorPrimaryFont"
         android:layout_gravity="center"
         android:textSize="20dp"
         android:width="50dp"
@@ -45,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/colorSecondaryFont"
         android:textSize="20dp"
         android:layout_marginTop="25dp"
         android:text="weight (kg)"/>
@@ -52,6 +55,7 @@
     <EditText
         android:id="@+id/current_weight"
         android:backgroundTint="@color/colorAccent"
+        android:textColor="@color/colorPrimaryFont"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:inputType="number"

@@ -31,7 +31,6 @@ public class SelectSuperSetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_super_set);
 
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
-
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
 
@@ -41,43 +40,54 @@ public class SelectSuperSetActivity extends AppCompatActivity {
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
         mainActivity = extras.getString("main activity");
-
         mainSets = extras.getInt("main sets");
         mainReps = extras.getInt("main reps");
         mainWeight = extras.getInt("main weight");
 
+        setupActionBar();
+        populateActivitiesList();
+    }
+
+    public void setupActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add superset to: " + workout.getName());
+    }
 
+    public void populateActivitiesList(){
         ArrayList<Activity> allActivities = Activity.getAllActivities();
 
-        ListAvailableActivitiesAdapter listAvailableActivitiesAdapter = new ListAvailableActivitiesAdapter(this, allActivities);
+        ListAvailableActivitiesAdapter listAvailableActivitiesAdapter =
+                new ListAvailableActivitiesAdapter(this, allActivities);
         ListView activitiesList = (ListView) findViewById(R.id.available_activities_list);
         activitiesList.setAdapter(listAvailableActivitiesAdapter);
     }
 
     public void onAddSetButtonClick(View view){
-        TextView addSetText = (TextView) view;
-        Activity selectedActivity = (Activity) addSetText.getTag();
-        String activityName = selectedActivity.toString();
+        String activityName = getActivityChoice(view);
 
         Intent intent = new Intent(this, AddSuperSetActivity.class);
         intent.putExtra("activity", activityName);
+        updateIntentWithMainSetDetails(intent);
+        startActivity(intent);
+    }
+
+    public String getActivityChoice(View view){
+        TextView addSetText = (TextView) view;
+        Activity selectedActivity = (Activity) addSetText.getTag();
+        return selectedActivity.toString();
+    }
+
+    public void updateIntentWithMainSetDetails(Intent intent){
         intent.putExtra("main activity", mainActivity);
         intent.putExtra("main sets", mainSets);
         intent.putExtra("main reps", mainReps);
         intent.putExtra("main weight", mainWeight);
         intent.putExtra("workout", workout.getId());
-        startActivity(intent);
     }
 
     public void addCustomSuperSetClick(View button){
         Intent intent = new Intent(this, AddCustomSuperSetActivity.class);
-        intent.putExtra("main activity", mainActivity);
-        intent.putExtra("main sets", mainSets);
-        intent.putExtra("main reps", mainReps);
-        intent.putExtra("main weight", mainWeight);
-        intent.putExtra("workout", workout.getId());
+        updateIntentWithMainSetDetails(intent);
         startActivity(intent);
     }
 }

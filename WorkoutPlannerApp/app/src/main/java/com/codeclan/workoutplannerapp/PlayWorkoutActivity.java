@@ -92,6 +92,14 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         return Integer.valueOf(weightAchieved);
     }
 
+    public void finishSetAndUpdateLog(){
+        Integer numberOfReps = getRepsInput();
+        Integer actualWeight = getWeightInput();
+
+        workoutLog.finishCurrentSet(numberOfReps, actualWeight);
+        appHistory.updateLog(sharedPref, workoutLog);
+    }
+
     public void finishSetButtonClicked(View button){
         finishSetAndUpdateLog();
 
@@ -107,11 +115,5 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         }
     }
 
-    public void finishSetAndUpdateLog(){
-        Integer numberOfReps = getRepsInput();
-        Integer actualWeight = getWeightInput();
 
-        workoutLog.finishCurrentSet(numberOfReps, actualWeight);
-        appHistory.updateLog(sharedPref, workoutLog);
-    }
 }

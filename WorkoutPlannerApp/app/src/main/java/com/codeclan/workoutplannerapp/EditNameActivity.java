@@ -32,9 +32,16 @@ public class EditNameActivity extends AppCompatActivity {
         int selectedWorkoutId = extras.getInt("workout");
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
+        setupActionBar();
+        populateTextFields();
+    }
+
+    public void setupActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("edit name: " + workout.getName());
+    }
 
+    public void populateTextFields(){
         EditText nameInputField = (EditText) findViewById(R.id.workout_name_input);
         nameInputField.setText(workout.getName());
     }

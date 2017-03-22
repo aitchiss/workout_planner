@@ -53,7 +53,7 @@ public class AddSuperSetActivity extends AppCompatActivity {
         actionBar.setTitle("Add as superset with " + mainActivity);
 
         TextView activityName = (TextView) findViewById(R.id.add_set_activity_name);
-        activityName.setText(selectedActivityName.toLowerCase());
+        activityName.setText(selectedActivityName);
     }
 
     public void hideIrrelevantViews(){
@@ -76,7 +76,6 @@ public class AddSuperSetActivity extends AppCompatActivity {
             errorDialog();
         } else {
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
-
             Integer numberOfWeight = getWeightInput();
 
             Set set1 = new Set(mainActivity, mainReps, mainWeight);

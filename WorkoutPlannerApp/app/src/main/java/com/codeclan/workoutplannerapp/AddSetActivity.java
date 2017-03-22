@@ -46,7 +46,7 @@ public class AddSetActivity extends AppCompatActivity {
         actionBar.setTitle("Adding to: " + workout.getName());
 
         TextView activityName = (TextView) findViewById(R.id.add_set_activity_name);
-        activityName.setText(selectedActivityName.toLowerCase());
+        activityName.setText(selectedActivityName);
     }
 
     public void confirmAddSetButtonClick(View button){

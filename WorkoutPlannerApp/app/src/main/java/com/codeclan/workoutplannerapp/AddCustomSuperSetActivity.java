@@ -70,21 +70,8 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
         } else {
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
-            EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight;
-
-            if (isEmpty(numberOfWeightInput)){
-                numberOfWeight = 0;
-            } else {
-                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
-            }
-
-            EditText activity = (EditText) findViewById(R.id.enter_custom_activity);
-            String superSetActivity = activity.getText().toString();
-
-            if (superSetActivity.equals("")){
-                superSetActivity = "unnamed activity";
-            }
+            Integer numberOfWeight = getWeightInput();
+            String superSetActivity = getActivity();
 
             Set set1 = new Set(mainActivity, mainReps, mainWeight);
             Set set2 = new Set(superSetActivity, numberOfReps, numberOfWeight);
@@ -107,5 +94,26 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
 
     private boolean isEmpty(EditText editText) {
         return editText.getText().toString().length() == 0;
+    }
+
+    public Integer getWeightInput(){
+        EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
+
+        if (isEmpty(numberOfWeightInput)){
+            return 0;
+        } else {
+            return Integer.valueOf(numberOfWeightInput.getText().toString());
+        }
+    }
+
+    public String getActivity(){
+        EditText activity = (EditText) findViewById(R.id.enter_custom_activity);
+        String activityName = activity.getText().toString();
+
+        if (activityName.equals("")){
+            return  "unnamed activity";
+        } else {
+            return activityName;
+        }
     }
 }

@@ -41,12 +41,14 @@ public class CreateWorkoutActivity extends AppCompatActivity {
 
         nextId = new AtomicInteger();
         nextId.set(appHistory.setupID(sharedPrefID));
-        Log.d("id: ", String.valueOf(nextId.incrementAndGet()));
 
+        setupActionBar();
+    }
+
+    public void setupActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Create new workout");
     }
-
 
     public void onSaveButtonClick(View view){
 

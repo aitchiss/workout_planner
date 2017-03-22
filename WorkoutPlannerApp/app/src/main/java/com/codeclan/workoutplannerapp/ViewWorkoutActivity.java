@@ -37,7 +37,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_workout);
-        
+
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
@@ -48,7 +48,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
         setupActionBar();
-        fillListView();;
+        fillListView();
     }
 
     @Override
@@ -87,6 +87,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void onEditButtonClick(View button){
         int selectedWorkout = workout.getId();
         Intent intent = new Intent(this, EditWorkoutActivity.class);
@@ -113,6 +114,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         ImageView plusButton = (ImageView) button;
         Set setToCopy = (Set) plusButton.getTag();
         int indexOfSetToCopy = workout.getAllSets().indexOf(setToCopy);
+
         Set setToAdd = new Set(setToCopy.getActivity(), setToCopy.getReps(), setToCopy.getWeight());
         workout.addSetAtIndex(setToAdd, indexOfSetToCopy);
 

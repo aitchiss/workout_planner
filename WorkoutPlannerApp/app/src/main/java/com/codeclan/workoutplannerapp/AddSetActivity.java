@@ -60,15 +60,6 @@ public class AddSetActivity extends AppCompatActivity {
             Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
-//            EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-//            Integer numberOfWeight;
-
-//            if (isEmpty(numberOfWeightInput)){
-//                numberOfWeight = 0;
-//            } else {
-//                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
-//            }
-
             Integer numberOfWeight = getWeightInput();
 
             workout.addMultipleSets(activity, numberOfReps, numberOfWeight, numberOfSets);
@@ -97,7 +88,7 @@ public class AddSetActivity extends AppCompatActivity {
         } else {
             Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
-            
+
             Integer numberOfWeight = getWeightInput();
 
             Intent intent = new Intent(this, SelectSuperSetActivity.class);

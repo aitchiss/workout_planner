@@ -24,6 +24,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
+import static android.R.attr.button;
+
 public class ViewWorkoutActivity extends AppCompatActivity {
 
     WorkoutLog workoutLog;
@@ -101,9 +103,14 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public Set getSetFromImageView(View view){
+        ImageView minusButton = (ImageView) view;
+        Set set = (Set) minusButton.getTag();
+        return set;
+    }
+
     public void onMinusSetButtonClick(View button){
-        ImageView minusButton = (ImageView) button;
-        Set setToDelete = (Set) minusButton.getTag();
+        Set setToDelete = getSetFromImageView(button);
         workout.deleteSet(setToDelete);
         appHistory.updateLog(sharedPref, workoutLog);
 
@@ -111,8 +118,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     }
 
     public void onPlusButtonClick(View button){
-        ImageView plusButton = (ImageView) button;
-        Set setToCopy = (Set) plusButton.getTag();
+        Set setToCopy = getSetFromImageView(button);
         int indexOfSetToCopy = workout.getAllSets().indexOf(setToCopy);
 
         Set setToAdd = new Set(setToCopy.getActivity(), setToCopy.getReps(), setToCopy.getWeight());

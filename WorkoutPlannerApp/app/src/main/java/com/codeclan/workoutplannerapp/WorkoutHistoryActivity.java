@@ -34,12 +34,19 @@ public class WorkoutHistoryActivity extends AppCompatActivity {
 
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
+        setupActionBar();
+        populateHistoryList();
+    }
+
+    public void setupActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("History for: " + workout.getName());
+    }
 
+    public void populateHistoryList(){
         ArrayList<Workout> listOfCompletedWorkouts = workoutLog.getCompletedWorkoutsById(workout.getId());
-
-        WorkoutHistoryAdapter workoutHistoryAdapter = new WorkoutHistoryAdapter(this, listOfCompletedWorkouts);
+        WorkoutHistoryAdapter workoutHistoryAdapter =
+                new WorkoutHistoryAdapter(this, listOfCompletedWorkouts);
         ListView historyListView = (ListView) findViewById(R.id.workout_history_list);
         historyListView.setAdapter(workoutHistoryAdapter);
     }

@@ -26,7 +26,8 @@
         <activity android:name=".AddCustomSetActivity" />
         <activity android:name=".AddSuperSetActivity" />
         <activity android:name=".SelectSuperSetActivity" />
-        <activity android:name=".AddCustomSuperSetActivity"></activity>
+        <activity android:name=".AddCustomSuperSetActivity" />
+        <activity android:name=".EditNameActivity"></activity>
     </application>
 
 </manifest>

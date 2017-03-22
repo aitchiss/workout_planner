@@ -36,6 +36,10 @@ public class WorkoutTemplate implements WorkoutType {
         return name;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     public ArrayList<Set> getAllSets(){
         return this.sets;
     }

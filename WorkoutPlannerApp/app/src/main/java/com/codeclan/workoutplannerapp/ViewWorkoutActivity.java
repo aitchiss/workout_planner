@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +31,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     WorkoutTemplate workout;
     AppHistory appHistory;
     SharedPreferences sharedPref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,19 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
         ListView listView = (ListView) findViewById(R.id.workout_contents);
         listView.setAdapter(workoutContentsAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.activity_view_workout, menu);
+        return true;
+    }
+
+    public void onEditNameClick(MenuItem item){
+        Intent intent = new Intent(this, EditNameActivity.class);
+        intent.putExtra("workout", workout.getId());
+        startActivity(intent);
     }
 
     public void onEditButtonClick(View button){

@@ -53,17 +53,23 @@ public class CreateWorkoutActivity extends AppCompatActivity {
     public void onSaveButtonClick(View view){
 
         String workoutName = getWorkoutName();
-        int id = getIDAndUpdateLog();
+        int nextId = getIDAndUpdateLog();
 
-        WorkoutTemplate workout = new WorkoutTemplate(workoutName, id);
-        int workoutId = workout.getId();
-        workoutLog.addWorkoutTemplate(workout);
-
-        appHistory.updateLog(sharedPref, workoutLog);
+        int workoutID = storeNewWorkoutTemplateAndReturnID(workoutName, nextId);
 
         Intent intent = new Intent(this, ViewWorkoutActivity.class);
-        intent.putExtra("workout", workoutId);
+        intent.putExtra("workout", workoutID);
         startActivity(intent);
+    }
+
+    public int storeNewWorkoutTemplateAndReturnID(String name, int id){
+        WorkoutTemplate workout = new WorkoutTemplate(name, id);
+        int workoutId = workout.getId();
+
+        workoutLog.addWorkoutTemplate(workout);
+        appHistory.updateLog(sharedPref, workoutLog);
+
+        return workoutId;
     }
 
     public int getIDAndUpdateLog(){

@@ -23,7 +23,7 @@ public class WorkoutLog {
     }
 
     public void addWorkoutTemplate(WorkoutTemplate workoutTemplate){
-        this.workoutTemplates.add(workoutTemplate);
+        this.workoutTemplates.add(0, workoutTemplate);
     }
 
     public WorkoutTemplate getWorkoutTemplate(String workoutName){

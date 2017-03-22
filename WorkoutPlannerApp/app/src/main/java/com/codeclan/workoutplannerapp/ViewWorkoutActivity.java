@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,6 +61,24 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                break;
+            case R.id.edit_name_button:
+                Intent intent = new Intent(this, EditNameActivity.class);
+                intent.putExtra("workout", workout.getId());
+                startActivity(intent);
+                break;
+            case R.id.delete_icon:
+                deleteWorkoutButtonClick();
+                break;
+        }
+        return true;
+    }
+
     public void setupActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -81,21 +100,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         if (listOfSets.size() == 0){
             emptySets.setVisibility(View.VISIBLE);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.edit_name_button:
-                Intent intent = new Intent(this, EditNameActivity.class);
-                intent.putExtra("workout", workout.getId());
-                startActivity(intent);
-                break;
-            case R.id.delete_icon:
-                deleteWorkoutButtonClick();
-                break;
-        }
-        return true;
     }
 
     public void deleteWorkoutButtonClick(){

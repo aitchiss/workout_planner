@@ -71,7 +71,13 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            Integer numberOfWeight;
+
+            if (isEmpty(numberOfWeightInput)){
+                numberOfWeight = 0;
+            } else {
+                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            }
 
             EditText activity = (EditText) findViewById(R.id.enter_custom_activity);
             String superSetActivity = activity.getText().toString();

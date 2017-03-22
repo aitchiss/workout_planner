@@ -50,7 +50,13 @@ public class AddCustomSetActivity extends AppCompatActivity {
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            Integer numberOfWeight;
+
+            if (isEmpty(numberOfWeightInput)){
+                numberOfWeight = 0;
+            } else {
+                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            }
 
             EditText activity = (EditText) findViewById(R.id.enter_custom_activity);
             String activityName = activity.getText().toString();
@@ -95,7 +101,13 @@ public class AddCustomSetActivity extends AppCompatActivity {
             }
 
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            Integer numberOfWeight;
+
+            if (isEmpty(numberOfWeightInput)){
+                numberOfWeight = 0;
+            } else {
+                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            }
 
             Intent intent = new Intent(this, SelectSuperSetActivity.class);
             intent.putExtra("workout", workout.getId());

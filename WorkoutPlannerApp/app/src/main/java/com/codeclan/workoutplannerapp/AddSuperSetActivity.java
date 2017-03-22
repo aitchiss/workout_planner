@@ -78,7 +78,13 @@ public class AddSuperSetActivity extends AppCompatActivity {
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            Integer numberOfWeight;
+
+            if (isEmpty(numberOfWeightInput)){
+                numberOfWeight = 0;
+            } else {
+                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            }
 
             Set set1 = new Set(mainActivity, mainReps, mainWeight);
             Set set2 = new Set(superSetActivity, numberOfReps, numberOfWeight);

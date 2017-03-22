@@ -30,7 +30,7 @@ public class ListAvailableActivitiesAdapter extends ArrayAdapter<Activity> {
         Activity currentActivity = getItem(position);
 
         TextView activityName = (TextView) listItemView.findViewById(R.id.activity_name);
-        activityName.setText(currentActivity.toString().toLowerCase());
+        activityName.setText(currentActivity.toString());
         activityName.setTag(currentActivity);
 
         return listItemView;

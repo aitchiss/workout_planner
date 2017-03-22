@@ -47,7 +47,7 @@ public class AddSuperSetActivity extends AppCompatActivity {
         mainWeight = extras.getInt("main weight");
 
         String selectedActivityName = extras.getString("activity");
-        superSetActivity = Activity.valueOf(selectedActivityName);
+        superSetActivity = Activity.getActivityByString(selectedActivityName);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add as superset with " + mainActivity);
@@ -106,6 +106,6 @@ public class AddSuperSetActivity extends AppCompatActivity {
     }
 
     private boolean isEmpty(EditText editText) {
-        return editText.getText().toString().trim().length() == 0;
+        return editText.getText().toString().length() == 0;
     }
 }

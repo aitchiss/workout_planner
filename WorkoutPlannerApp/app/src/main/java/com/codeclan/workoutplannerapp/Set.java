@@ -27,7 +27,7 @@ public class Set {
         if (this.activity == null){
             return this.customActivity;
         }
-        return this.activity.toString().toLowerCase();
+        return this.activity.toString();
     }
 
     public Integer getReps() {

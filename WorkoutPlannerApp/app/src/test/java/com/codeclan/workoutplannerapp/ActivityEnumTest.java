@@ -20,4 +20,10 @@ public class ActivityEnumTest {
         assertEquals(Activity.DEADLIFT, firstActivity);
         assertEquals(Activity.SQUAT, secondActivity);
     }
+
+    @Test
+    public void toStringGetsActivityName(){
+        assertEquals("benchpress", Activity.BENCHPRESS.toString());
+    }
+
 }

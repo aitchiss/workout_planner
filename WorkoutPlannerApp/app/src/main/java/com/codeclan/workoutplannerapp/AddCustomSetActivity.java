@@ -121,6 +121,6 @@ public class AddCustomSetActivity extends AppCompatActivity {
     }
 
     private boolean isEmpty(EditText editText) {
-        return editText.getText().toString().trim().length() == 0;
+        return editText.getText().toString().length() == 0;
     }
 }

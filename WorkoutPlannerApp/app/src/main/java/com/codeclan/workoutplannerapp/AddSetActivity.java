@@ -40,7 +40,7 @@ public class AddSetActivity extends AppCompatActivity {
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
         String selectedActivityName = extras.getString("activity");
-        activity = Activity.valueOf(selectedActivityName);
+        activity = Activity.getActivityByString(selectedActivityName);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Adding to: " + workout.getName());
@@ -117,7 +117,7 @@ public class AddSetActivity extends AppCompatActivity {
     }
 
     private boolean isEmpty(EditText editText) {
-        return editText.getText().toString().trim().length() == 0;
+        return editText.getText().toString().length() == 0;
     }
 
 }

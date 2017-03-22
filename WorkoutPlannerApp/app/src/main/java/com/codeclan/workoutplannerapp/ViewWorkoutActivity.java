@@ -51,14 +51,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
         actionBar.setTitle("workout: " + workout.getName());
-
-        ArrayList<Set> listOfSets = workout.getAllSets();
-
-       checkIfEmpty(listOfSets);
-
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
-        ListView listView = (ListView) findViewById(R.id.workout_contents);
-        listView.setAdapter(workoutContentsAdapter);
+        fillListView();;
     }
 
     @Override
@@ -66,6 +59,15 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.activity_view_workout, menu);
         return true;
+    }
+
+    public void fillListView(){
+        ArrayList<Set> listOfSets = workout.getAllSets();
+        checkIfEmpty(listOfSets);
+
+        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
+        ListView listView = (ListView) findViewById(R.id.workout_contents);
+        listView.setAdapter(workoutContentsAdapter);
     }
 
     public void checkIfEmpty(ArrayList<Set> listOfSets){

@@ -69,7 +69,6 @@ public class AddCustomSuperSetActivity extends AppCompatActivity {
             errorDialog();
         } else {
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
-
             Integer numberOfWeight = getWeightInput();
             String superSetActivity = getActivity();
 

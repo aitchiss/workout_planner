@@ -54,7 +54,6 @@ public class AddSetActivity extends AppCompatActivity {
         EditText numberOfSetsInput = (EditText) findViewById(R.id.choose_set_number);
         EditText numberOfRepsInput = (EditText) findViewById(R.id.choose_reps_number);
 
-
         if (isEmpty(numberOfSetsInput) || isEmpty(numberOfRepsInput)){
             errorDialog();
         } else {
@@ -62,7 +61,13 @@ public class AddSetActivity extends AppCompatActivity {
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            Integer numberOfWeight;
+
+            if (isEmpty(numberOfWeightInput)){
+                numberOfWeight = 0;
+            } else {
+                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            }
 
             workout.addMultipleSets(activity, numberOfReps, numberOfWeight, numberOfSets);
 
@@ -72,7 +77,6 @@ public class AddSetActivity extends AppCompatActivity {
             intent.putExtra("workout", workout.getId());
             startActivity(intent);
         }
-
     }
 
     public void errorDialog(){
@@ -93,7 +97,13 @@ public class AddSetActivity extends AppCompatActivity {
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
             EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            Integer numberOfWeight;
+
+            if (isEmpty(numberOfWeightInput)){
+                numberOfWeight = 0;
+            } else {
+                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+            }
 
             Intent intent = new Intent(this, SelectSuperSetActivity.class);
             intent.putExtra("workout", workout.getId());

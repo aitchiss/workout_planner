@@ -37,10 +37,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_workout);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
+        
         sharedPref = getSharedPreferences(WORKOUTLOG, Context.MODE_PRIVATE);
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
@@ -50,7 +47,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         int selectedWorkoutId = extras.getInt("workout");
         workout = workoutLog.getWorkoutTemplate(selectedWorkoutId);
 
-        actionBar.setTitle("workout: " + workout.getName());
+        setupActionBar();
         fillListView();;
     }
 
@@ -60,6 +57,13 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.activity_view_workout, menu);
         return true;
     }
+
+    public void setupActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("workout: " + workout.getName());
+    }
+
 
     public void fillListView(){
         ArrayList<Set> listOfSets = workout.getAllSets();
@@ -102,12 +106,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         workout.deleteSet(setToDelete);
         appHistory.updateLog(sharedPref, workoutLog);
 
-        ArrayList<Set> listOfSets = workout.getAllSets();
-        checkIfEmpty(listOfSets);
-
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
-        ListView listView = (ListView) findViewById(R.id.workout_contents);
-        listView.setAdapter(workoutContentsAdapter);
+        fillListView();
     }
 
     public void onPlusButtonClick(View button){
@@ -118,10 +117,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         workout.addSetAtIndex(setToAdd, indexOfSetToCopy);
 
         appHistory.updateLog(sharedPref, workoutLog);
-        ArrayList<Set> listOfSets = workout.getAllSets();
-        WorkoutContentsAdapter workoutContentsAdapter = new WorkoutContentsAdapter(this, listOfSets);
-        ListView listView = (ListView) findViewById(R.id.workout_contents);
-        listView.setAdapter(workoutContentsAdapter);
+        fillListView();
     }
 
     public void deleteWorkoutButtonClick(View button){

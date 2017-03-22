@@ -29,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
         appHistory = new AppHistory();
         workoutLog = appHistory.setup(sharedPref);
 
+        populateWorkoutList();
+    }
+
+    public void populateWorkoutList(){
         ArrayList<WorkoutTemplate> list = workoutLog.getAllWorkoutTemplates();
-
-        appHistory.updateLog(sharedPref, workoutLog);
-
         WorkoutListAdapter workoutListAdapter = new WorkoutListAdapter(this, list);
         ListView listView = (ListView) findViewById(R.id.all_workouts_list);
         listView.setAdapter(workoutListAdapter);

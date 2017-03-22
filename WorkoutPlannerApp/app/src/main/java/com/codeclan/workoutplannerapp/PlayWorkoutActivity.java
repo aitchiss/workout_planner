@@ -37,17 +37,27 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         int selectedWorkoutId = extras.getInt("workout");
 
-        workoutLog.startWorkout(selectedWorkoutId);
-        workout = workoutLog.getCurrentWorkout();
-        set = workoutLog.getCurrentSet();
+        startWorkoutActions(selectedWorkoutId);
+        setupActionBar();
+        setupDisplay();
+    }
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("In progress: " + workout.getName());
-
+    public void setupDisplay(){
         displayCurrentActivity();
         displaySetProgress();
         displayNumberOfReps();
         displayWeight();
+    }
+
+    public void startWorkoutActions(int selectedWorkoutId){
+        workoutLog.startWorkout(selectedWorkoutId);
+        workout = workoutLog.getCurrentWorkout();
+        set = workoutLog.getCurrentSet();
+    }
+
+    public void setupActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("In progress: " + workout.getName());
     }
 
     public void displayCurrentActivity(){
@@ -65,38 +75,43 @@ public class PlayWorkoutActivity extends AppCompatActivity {
         numberOfReps.setText(set.getReps().toString());
     }
 
-
     public void displaySetProgress(){
         TextView currentSetNumber = (TextView) findViewById(R.id.current_set_number);
         currentSetNumber.setText(workoutLog.getCurrentSetProgress(set.getActivity()));
     }
 
-    public void finishSetButtonClicked(View button){
+    public Integer getRepsInput(){
         EditText numberOfRepsInput = (EditText) findViewById(R.id.current_reps);
         String numberOfRepsAchieved = numberOfRepsInput.getText().toString();
-        Integer numberOfReps = Integer.valueOf(numberOfRepsAchieved);
+        return Integer.valueOf(numberOfRepsAchieved);
+    }
 
+    public Integer getWeightInput(){
         EditText weightInput = (EditText) findViewById((R.id.current_weight));
         String weightAchieved = weightInput.getText().toString();
-        Integer actualWeight = Integer.valueOf(weightAchieved);
+        return Integer.valueOf(weightAchieved);
+    }
 
-        workoutLog.finishCurrentSet(numberOfReps, actualWeight);
-        appHistory.updateLog(sharedPref, workoutLog);
+    public void finishSetButtonClicked(View button){
+        finishSetAndUpdateLog();
 
         if (workoutLog.getCurrentSet() == null){
-
             Toast.makeText(this, "Workout Finished", Toast.LENGTH_LONG).show();
+
             Intent intent = new Intent(this, ViewWorkoutActivity.class);
             intent.putExtra("workout", workout.getId());
             startActivity(intent);
-
         } else {
-
             set = workoutLog.getCurrentSet();
-            displaySetProgress();
-            displayNumberOfReps();
-            displayWeight();
-            displayCurrentActivity();
+            setupDisplay();
         }
+    }
+
+    public void finishSetAndUpdateLog(){
+        Integer numberOfReps = getRepsInput();
+        Integer actualWeight = getWeightInput();
+
+        workoutLog.finishCurrentSet(numberOfReps, actualWeight);
+        appHistory.updateLog(sharedPref, workoutLog);
     }
 }

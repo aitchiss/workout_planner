@@ -60,14 +60,16 @@ public class AddSetActivity extends AppCompatActivity {
             Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
 
-            EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight;
+//            EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
+//            Integer numberOfWeight;
 
-            if (isEmpty(numberOfWeightInput)){
-                numberOfWeight = 0;
-            } else {
-                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
-            }
+//            if (isEmpty(numberOfWeightInput)){
+//                numberOfWeight = 0;
+//            } else {
+//                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
+//            }
+
+            Integer numberOfWeight = getWeightInput();
 
             workout.addMultipleSets(activity, numberOfReps, numberOfWeight, numberOfSets);
 
@@ -95,15 +97,8 @@ public class AddSetActivity extends AppCompatActivity {
         } else {
             Integer numberOfSets = Integer.valueOf(numberOfSetsInput.getText().toString());
             Integer numberOfReps = Integer.valueOf(numberOfRepsInput.getText().toString());
-
-            EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
-            Integer numberOfWeight;
-
-            if (isEmpty(numberOfWeightInput)){
-                numberOfWeight = 0;
-            } else {
-                numberOfWeight = Integer.valueOf(numberOfWeightInput.getText().toString());
-            }
+            
+            Integer numberOfWeight = getWeightInput();
 
             Intent intent = new Intent(this, SelectSuperSetActivity.class);
             intent.putExtra("workout", workout.getId());
@@ -118,6 +113,16 @@ public class AddSetActivity extends AppCompatActivity {
 
     private boolean isEmpty(EditText editText) {
         return editText.getText().toString().length() == 0;
+    }
+
+    public Integer getWeightInput(){
+        EditText numberOfWeightInput = (EditText) findViewById(R.id.choose_weight_number);
+
+        if (isEmpty(numberOfWeightInput)){
+            return 0;
+        } else {
+            return Integer.valueOf(numberOfWeightInput.getText().toString());
+        }
     }
 
 }

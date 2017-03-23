@@ -40,7 +40,7 @@ public class WorkoutHistoryActivity extends AppCompatActivity {
 
     public void setupActionBar(){
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("History for: " + workout.getName());
+        actionBar.setTitle("History: " + workout.getName());
     }
 
     public void populateHistoryList(){

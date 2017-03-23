@@ -82,9 +82,8 @@ public class ViewWorkoutActivity extends AppCompatActivity {
     public void setupActionBar(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("workout: " + workout.getName());
+        actionBar.setTitle(workout.getName());
     }
-
 
     public void fillListView(){
         ArrayList<Set> listOfSets = workout.getAllSets();
@@ -108,7 +107,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         setTheme(R.style.DialogWarning);
         dialogFragment.show(fm, "Confirm delete");
     }
-
 
     public void onEditButtonClick(View button){
         int selectedWorkout = workout.getId();
@@ -148,8 +146,6 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         fillListView();
     }
 
-
-
     public void confirmDeleteButtonClick(View button){
         workoutLog.deleteWorkoutTemplate(workout);
         appHistory.updateLog(sharedPref, workoutLog);
@@ -171,6 +167,4 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         intent.putExtra("workout", workout.getId());
         startActivity(intent);
     }
-
-
 }

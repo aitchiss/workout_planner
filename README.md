@@ -35,7 +35,7 @@ Particular strengths in the final app:
 
 ### Screenshots
 
-- [Launch/Main Activity - list of workout templates] (documentation/Screen Shot 2017-03-26 at 16.19.53.jpg)
-- [View Workout Activity] (documentation/Screen Shot 2017-03-26 at 16.20.05.jpg)
-- [Play Workout Activity - user works through sets in gym](documentation/Screen Shot 2017-03-26 at 16.20.14.jpg)
-- [Create Workout Activity](documentation/Screen Shot 2017-03-26 at 16.20.34.jpg)
+- [Launch/Main Activity - list of workout templates](documentation/Screen%20Shot%202017-03-26%20at%2016.19.53.jpg)
+- [View Workout Activity](documentation/Screen%20Shot%202017-03-26%20at%2016.20.05.jpg)
+- [Play Workout Activity - user works through sets in gym](documentation/Screen%20Shot%202017-03-26%20at%2016.20.14.jpg)
+- [Create Workout Activity](documentation/Screen%20Shot%202017-03-26%20at%2016.20.34.jpg)

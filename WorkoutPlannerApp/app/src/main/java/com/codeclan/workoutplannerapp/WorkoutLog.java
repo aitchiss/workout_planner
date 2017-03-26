@@ -14,12 +14,22 @@ public class WorkoutLog {
     private Workout currentWorkout;
     private Set currentSet;
     private ArrayList<Workout> completedWorkouts;
+    private ArrayList<WorkoutType> allWorkouts;
 
 
     public WorkoutLog(){
 
         this.workoutTemplates = new ArrayList<WorkoutTemplate>();
         this.completedWorkouts = new ArrayList<Workout>();
+        this.allWorkouts = new ArrayList<WorkoutType>();
+    }
+
+    public void addToAllWorkouts(WorkoutType workout){
+        this.allWorkouts.add(workout);
+    }
+
+    public ArrayList<WorkoutType> getAllWorkoutTypes(){
+        return this.allWorkouts;
     }
 
     public void addWorkoutTemplate(WorkoutTemplate workoutTemplate){

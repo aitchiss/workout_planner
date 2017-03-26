@@ -161,5 +161,14 @@ public class WorkoutLogTest {
         assertEquals("2 of 3", workoutLog.getCurrentSetProgress("benchpress"));
     }
 
+    @Test
+    public void canAddAllWorkoutTypes(){
+        WorkoutType template1 = new WorkoutTemplate("test", 4);
+        WorkoutType workout1 = new Workout(workoutTemplate);
+        workoutLog.addToAllWorkouts(template1);
+        workoutLog.addToAllWorkouts(workout1);
+        assertEquals(2, workoutLog.getAllWorkoutTypes().size());
+    }
+
 
 }

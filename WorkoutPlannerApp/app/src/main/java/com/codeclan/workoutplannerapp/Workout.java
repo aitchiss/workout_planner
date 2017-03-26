@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by user on 16/03/2017.
  */
 
-public class Workout {
+public class Workout implements WorkoutType {
 
     private String name;
     private ArrayList<Set> sets;

@@ -33,4 +33,9 @@ Particular strengths in the final app:
 - Streamlined design style with calls to action clearly identifiable
 - Additional features added to enhance user experience, including ability to add or delete similar sets from the workout overview screen, and ability to skip a set with one click, rather than manually inputting 0reps, 0kg.
 
+### Screenshots
 
+- [Launch/Main Activity - list of workout templates] (documentation/Screen Shot 2017-03-26 at 16.19.53.jpg)
+- [View Workout Activity] (documentation/Screen Shot 2017-03-26 at 16.20.05.jpg)
+- [Play Workout Activity - user works through sets in gym](documentation/Screen Shot 2017-03-26 at 16.20.14.jpg)
+- [Create Workout Activity](documentation/Screen Shot 2017-03-26 at 16.20.34.jpg)

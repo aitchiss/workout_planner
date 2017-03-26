@@ -19,7 +19,7 @@ MVP:
 
 ### My approach
 
-I started the project by producing a class diagram outlining the structure for the app. I also created a Trello board, breaking the project down into MOSCOW requirements, where I tracked progress throughout the project.
+I started the project by producing a [class diagram](documentation/WorkoutPlanner%20Class%20Model%20(1).jpg) outlining the structure for the app. I also created a Trello board, breaking the project down into MOSCOW requirements, where I tracked progress throughout the project.
 
 Initial design ideas were worked up using MockFlow and sketches of the app's planned activity flow.
 

@@ -5,7 +5,8 @@ I created this Android app during the CodeClan 16 week Software Development cour
 The app reflects my own interests, and the brief I developed for the project was as follows:
 
 ```
-You are needed to design an Android mobile application that will allow the user to create custom strength-training workout plans, 'play' through these workouts at the gym, and save their progress in a history.
+You are needed to design an Android mobile application that will allow the user to create custom 
+strength-training workout plans, 'play' through these workouts at the gym, and save their progress in a history.
 
 MVP:
 
